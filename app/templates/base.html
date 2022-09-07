@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - Time Tracker</title>
+        {% else %}
+        <title>Welcome to Time Tracker</title>
+        {% endif %}
+    </head>
+    <body>
+        <form action = "http://localhost:5000/index" method = "get">
+            <div>
+                Time Tracker:
+                <a href="{{ url_for('index') }}">Story</a>
+            </div>
+            <hr>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+            {% block content %}{% endblock %}
+        </form>
+    </body>
+</html>

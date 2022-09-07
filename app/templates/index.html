@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+     <table>
+        <tr>
+            <th style="background-color: yellow">Task</th>
+            <th style="background-color: green">Added</th>
+            <th style="background-color: red">Actions</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>
+                <a href="">Delete</a>
+                <br>
+                <a href="">Update</a>
+             </td>
+        </tr>
+    </table>
+    <form action="/" method="POST">
+        <input type="text" name="content" id="content">
+        <input type="submit" value="Add Event">
+    </form>
+    <h1>{{ story.STORY_NAME }}!</h1>
+    {% for story in stories %}
+    <div><p>{{ story.name.story_name }}: <b>{{ story.description }}</b></p></div>
+    <div><p>Story ID: <b>{{ story.story_id }}</b></p></div>
+    <div><p>To complete it would take <b>{{ story.estimated_time }}</b> minutes and it is <b>{{ story.active }}</b> for activity</p></div>
+    {% endfor %}
+{% endblock %}
