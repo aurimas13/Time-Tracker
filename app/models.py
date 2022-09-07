@@ -1,5 +1,5 @@
-from app import db
 from datetime import datetime
+from app import db
 
 
 class Story(db.Model):
@@ -8,7 +8,7 @@ class Story(db.Model):
     story_name = db.Column(db.String(64), index=True, unique=True)
     active = db.Column(db.Boolean)
     description = db.Column(db.String(140))
-    estimated_time = db.Column(db.Numeric, index=True, unique=True)
+    calculated_time = db.Column(db.Integer, index=True, unique=True)
     # Setup the relationship to the User table
     # tasks = db.relationship('Task')
 
@@ -24,7 +24,7 @@ class Task(db.Model):
     status = db.Column(db.Boolean, default=False)
     description = db.Column(db.String(140))
     task_estimated_time = db.Column(db.Numeric, index=True, unique=True)
-    start_date = db.Column(db.DateTime, index=True, unique=True) # default=datetime.utcnow,
+    start_date = db.Column(db.DateTime, default=datetime.utcnow, index=True, unique=True)
     end_date = db.Column(db.DateTime, index=True, unique=True)
     time_spent = end_date - start_date
     task_name = db.Column(db.String(64), index=True, unique=True)
