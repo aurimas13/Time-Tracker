@@ -1,0 +1,2 @@
+FLASK_APP=tracker.py
+FLASK_DEBUG=1
