@@ -2,28 +2,34 @@
 <html>
     <head>
         {% if title %}
+        <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/examples/starter-template/starter-template.css">
+        <link rel="icon" href="https://getbootstrap.com/docs/4.0/assets/img/favicons/favicon.ico">
         <title>{{ title }} - Time Tracker</title>
         {% else %}
         <title>Welcome to Time Tracker</title>
         {% endif %}
     </head>
     <body>
-        <form action = "http://localhost:5000/index" method = "get">
-            <div>
-                Time Tracker:
-                <a href="{{ url_for('index') }}">Story</a>
-            </div>
-            <hr>
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-            <ul>
-                {% for message in messages %}
-                <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-            {% endwith %}
-            {% block content %}{% endblock %}
-        </form>
+       <div>
+        Tracker:
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('story') }}">Story</a>
+<!--            <a href="{{ url_for('create_story') }}">Create Story</a>-->
+        </div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}
+        <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        {% endblock %}
     </body>
 </html>

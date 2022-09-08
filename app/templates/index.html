@@ -17,14 +17,14 @@
              </td>
         </tr>
     </table>
-    <form action="/" method="POST">
-        <input type="text" name="content" id="content">
-        <input type="submit" value="Add Event">
-    </form>
+<!--    <form action="/" method="POST">-->
+<!--        <input type="text" name="content" id="content">-->
+<!--        <input type="submit" value="Add Event">-->
+<!--    </form>-->
     <h1>{{ story.STORY_NAME }}!</h1>
     {% for story in stories %}
     <div><p>{{ story.name.story_name }}: <b>{{ story.description }}</b></p></div>
-    <div><p>Story ID: <b>{{ story.story_id }}</b></p></div>
+    <div><p>Story ID: <b>{{ story.id }}</b></p></div>
     <div><p>To complete it would take <b>{{ story.estimated_time }}</b> minutes and it is <b>{{ story.active }}</b> for activity</p></div>
     {% endfor %}
 {% endblock %}

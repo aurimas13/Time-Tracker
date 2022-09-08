@@ -1,6 +1,7 @@
 from flask import render_template, flash, redirect, url_for, request
-from app import app
+from app import app, db
 from app.forms import LoginForm
+from app.models import Story, Task, Developer
 
 @app.route('/', methods=['POST','GET'])
 @app.route('/index', methods=['POST','GET'])
@@ -48,29 +49,56 @@ def story():
         }
     ]
     if request.method == 'GET':
-        story = request.args.get('Story One')
-        # print(request.args)
-        # return (f'{story}')
-        return redirect(url_for('index', story=story))
-    # in_memory_datastore = {
-    #     "COBOL": {"name": "COBOL", "publication_year": 1960, "contribution": "record data"},
-    #     "ALGOL": {"name": "ALGOL", "publication_year": 1958, "contribution": "scoping and nested functions"},
-    #     "APL": {"name": "APL", "publication_year": 1962, "contribution": "array processing"},
-    #     "BASIC": {"name": "BASIC", "publication_year": 1964, "contribution": "runtime interpretation, office tooling"},
-    #     "PL": {"name": "PL", "publication_year": 1966, "contribution": "constants, function overloading, pointers"},
-    #     "SIMULA67": {"name": "SIMULA67", "publication_year": 1967,
-    #                  "contribution": "class/object split, subclassing, protected attributes"},
-    #     "Pascal": {"name": "Pascal", "publication_year": 1970,
-    #                "contribution": "modern unary, binary, and assignment operator syntax expectations"},
-    #     "CLU": {"name": "CLU", "publication_year": 1975,
-    #             "contribution": "iterators, abstract data types, generics, checked exceptions"},
-    # }
-    # return {"story": list(in_memory_datastore.values())}
+        stories = Story.query.all()
+        # print(stories[0].story_name)
+        # return "lala"
+        return render_template('story.html', title='Tracker', story=story, stories=stories)
+        # return redirect(url_for('index', story=story))
+    elif request.method == 'POST':
+        if request.form.get('Create Story') == 'Create Story':
+            print('lala')
+            return redirect(url_for('create_story'))
+        else:
+            pass  # do something else
 
 
-@app.route('/story/<programming_language_name>')
-def get_programming_language(programming_language_name):
-    return in_memory_datastore[programming_language_name]
+@app.route('/create_story', methods=['POST', 'GET', 'PUT'])
+def create_story():
+    # found = False
+    # print("lala", story)
+    if request.method == 'POST':
+        wtf = request.form
+        print(wtf)
+        # add_story = Story(story_name=wtf['story_name'],
+        #                   active=wtf['activity'] == 'on',
+        #                   description=wtf['story_description'],
+        #                   calculated_time=wtf['time'])
+        # print(add_story)
+        # db.session.add(add_story)
+        # db.session.commit()
+        # return redirect(url_for('story'))
+
+    return render_template('create_story.html', title='Tracker')
+
+    # print(request.form["story_name"])
+    # stories = Story.query.all()
+    #     story = request.form
+    # json_story = dict(story)
+    # print(json_story)
+
+    # for story in stories:
+    #     if story.story_name == story:
+    #         found = True
+    #
+    # # add the story if not in database already
+    # if not found:
+    #     add_story = Story(story, True)
+    #     db.session.add(add_story)
+    #     db.session.commit()
+    # #     stories = Story.query.all()
+    # print(stories[1].story_name)
+    # return "lala"
+    # else:
 
 
 @app.route('/login', methods=['GET', 'POST'])

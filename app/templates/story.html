@@ -10,8 +10,35 @@
         </task>
     </table>
     {% for story in stories %}
-    <div><p>{{ story.name.story_name }}: <b>{{ story.description }}</b></p></div>
-    <div><p>Story ID: <b>{{ story.story_id }}</b></p></div>
-    <div><p>To complete it would take <b>{{ story.estimated_time }}</b> minutes and it is <b>{{ story.active }}</b> for activity</p></div>
+    <div><p>{{ story.story_name }}: <b>{{ story.description }}</b></p></div>
+    <div><p>Story ID: <b>{{ story.id }}</b></p></div>
+    <div><p>To complete it would take <b>{{ story.calculated_time }}</b> minutes and it is <b>{{ story.active }}</b> for activity</p></div>
     {% endfor %}
+<!--<form action = "http://127.0.0.1:5000/create_story" method = "post">-->
+<!--        <div class="form-group">-->
+<!--            <label for="firstName">Firstname</label>-->
+<!--            <input type="text" class="form-control" id="firstNameId" name="firstName" aria-describedby="firstNameHelp" placeholder="James">-->
+<!--            <small id="firstNameHelp" class="form-text text-muted"></small>-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label for="lastName">Lastname</label>-->
+<!--            <input type="text" class="form-control" id="lastNameId" name="lastName" aria-describedby="lastNameHelp" placeholder="Dean">-->
+<!--            <small id="lastNameHelp" class="form-text text-muted"></small>-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label for="emailAddress">Email Address</label>-->
+<!--            <input type="email" class="form-control" id="emailAddressId" name="emailAddress" aria-describedby="emailAddressHelp" placeholder="jdean@example.com">-->
+<!--            <small id="emailAddressHelp" class="form-text text-muted"></small>-->
+<!--        </div>-->
+
+<!--        <button type="submit" class="btn btn-primary">Submit</button>-->
+
+<!--    </form>-->
+    <h3>Our Flask Buttons<h3/>
+    <form action = "http://127.0.0.1:5000/create_story" method = "get">
+        <input type="submit" value="Create Story" name="Create Story"/>
+    </form>
+<!--        <input type=button href="{{url_for('create_story')}}" value='click here', name='action1'>-->
 {% endblock %}

@@ -4,22 +4,22 @@ from app import db
 
 class Story(db.Model):
     """    User Story Schema    """
-    story_id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     story_name = db.Column(db.String(64), index=True, unique=True)
     active = db.Column(db.Boolean)
     description = db.Column(db.String(140))
-    calculated_time = db.Column(db.Integer, index=True, unique=True)
+    calculated_time = db.Column(db.Integer, index=True)
     # Setup the relationship to the User table
     # tasks = db.relationship('Task')
 
     def __repr__(self):
-        return '<Story {} with id {}>'.format(self.story_name, self.story_id)
+        return '<Story {} with id {}>'.format(self.story_name, self.id)
 
 
 class Task(db.Model):
     """     Task Schema     """
-    task_id = db.Column(db.Integer, primary_key=True)
-    story_id = db.Column(db.Integer, db.ForeignKey('story.story_id'))
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    story_id = db.Column(db.Integer, db.ForeignKey('story.id'))
     task = db.Column(db.String(64), index=True, unique=True)
     status = db.Column(db.Boolean, default=False)
     description = db.Column(db.String(140))
@@ -32,13 +32,13 @@ class Task(db.Model):
     # developer_id = db.Column(db.Integer, db.ForeignKey('task.task_id')) # sitas turi buti assigninamas
 
     def __repr__(self):
-        return '<Task {} of story id {} with task id {}>'.format(self.story_id, self.task_name, self.task_id)
+        return '<Task {} of story id {} with task id {}>'.format(self.story_id, self.task_name, self.id)
 
 
 class Developer(db.Model):
     """     Developer Schema    """
-    developer_id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     developer_name = db.Column(db.String(64), index=True, unique=True)
 
     def __repr__(self):
-        return '<Developer {} with developer id {}>'.format(self.developer_name, self.developer_id)
+        return '<Developer {} with developer id {}>'.format(self.developer_name, self.id)
