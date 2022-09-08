@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>{{ story.STORY_NAME }}!</h1>
+    <h1>{{ story.STORY_NAME }}</h1>
     <table>
         <task>
             <th>Task</th>
@@ -36,7 +36,7 @@
 <!--        <button type="submit" class="btn btn-primary">Submit</button>-->
 
 <!--    </form>-->
-    <h3>Our Flask Buttons<h3/>
+    <h3>Want to create a story?<h3/>
     <form action = "http://127.0.0.1:5000/create_story" method = "get">
         <input type="submit" value="Create Story" name="Create Story"/>
     </form>

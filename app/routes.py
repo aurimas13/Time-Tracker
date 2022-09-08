@@ -6,17 +6,17 @@ from app.models import Story, Task, Developer
 @app.route('/', methods=['POST','GET'])
 @app.route('/index', methods=['POST','GET'])
 def index():
-    story = {'STORY_NAME': 'Let\'s go'}
+    story = {'STORY_NAME': 'Home'}
     stories = [
         {
-            'name': {'story_name': 'Story One'},
+            'name': {'story_name': 'Story X'},
             'story_id': 1,
             'description': 'Finish the first endpoint!',
             'active': True,
             'estimated_time': 7
         },
         {
-            'name': {'story_name': 'Story Two'},
+            'name': {'story_name': 'Story Y'},
             'story_id': 2,
             'description': 'Conclude with the first story endpoint!',
             'active': False,
@@ -31,23 +31,7 @@ def index():
 
 @app.route('/story', methods=['POST', 'GET', 'PUT'])
 def story():
-    story = {'STORY_NAME': 'Let\'s go'}
-    stories = [
-        {
-            'name': {'story_name': 'Story One'},
-            'story_id': 1,
-            'description': 'Finish the first endpoint!',
-            'active': True,
-            'estimated_time': 7
-        },
-        {
-            'name': {'story_name': 'Story Two'},
-            'story_id': 2,
-            'description': 'Conclude with the first story endpoint!',
-            'active': False,
-            'estimated_time': 33
-        }
-    ]
+    story = {'STORY_NAME': 'Stories'}
     if request.method == 'GET':
         stories = Story.query.all()
         # print(stories[0].story_name)
@@ -67,16 +51,16 @@ def create_story():
     # found = False
     # print("lala", story)
     if request.method == 'POST':
-        wtf = request.form
-        print(wtf)
-        # add_story = Story(story_name=wtf['story_name'],
-        #                   active=wtf['activity'] == 'on',
-        #                   description=wtf['story_description'],
-        #                   calculated_time=wtf['time'])
-        # print(add_story)
-        # db.session.add(add_story)
-        # db.session.commit()
-        # return redirect(url_for('story'))
+        story = request.form
+        print(type(story['check']))
+        add_story = Story(story_name=story['story_name'],
+                          active=story['check'] == 'on',
+                          description=story['story_description'],
+                          calculated_time=story['time'])
+        print(add_story)
+        db.session.add(add_story)
+        db.session.commit()
+        return redirect(url_for('story'))
 
     return render_template('create_story.html', title='Tracker')
 
