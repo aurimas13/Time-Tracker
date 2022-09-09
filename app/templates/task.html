@@ -23,13 +23,13 @@
     <div><p>{{ task.task_name }}: <b>{{ task.task_description }}</b></p></div>
     <div><p>Task ID: <b>{{ task.id }}</b></p></div>
     <div><p>To complete it would take <b>{{ task.task_estimated_time }}</b> minutes and it is <b>{{ task.status }}</b> for activity</p></div>
-    <form action = "http://127.0.0.1:5000/story/{{ story.id }}/create_task" method = "get">
-        <input type="submit" value="Create Task" name="Create Task"/>
-    </form>
-    {% endfor %}
     <h3>Add a task<h3/>
     <form action = "http://127.0.0.1:5000/story/{{ story.id }}/create_task" method = "get">
         <input type="submit" value="Create Task" name="Create Task"/>
     </form>
     {% endfor %}
+    <h3>Add task?<h3/>
+    <form action = "http://127.0.0.1:5000/story/{{ story.id }}/create_task" method = "get">
+        <input type="submit" value="Create Task" name="Create Task"/>
+    </form>
 {% endblock %}

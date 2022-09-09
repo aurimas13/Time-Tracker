@@ -90,12 +90,12 @@ def story_id(id):
         tasks = Task.query.all()
         # print(stories[0].story_name)
         # return "lala"
-        return render_template('task.html', title='Tracker', task=task, tasks=tasks)
+        return render_template('task.html', title='Tracker', story=story, task=task, tasks=tasks)
         # return redirect(url_for('index', story=story))
     elif request.method == 'POST':
         if request.form.get('Create Task') == 'Create Task':
             print('lala')
-            return redirect(url_for('create_task'))
+            return redirect(url_for('/story/<id>/create_task'))
         else:
             pass  # do something else
 
