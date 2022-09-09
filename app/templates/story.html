@@ -13,6 +13,9 @@
     <div><p>{{ story.story_name }}: <b>{{ story.description }}</b></p></div>
     <div><p>Story ID: <b>{{ story.id }}</b></p></div>
     <div><p>To complete it would take <b>{{ story.calculated_time }}</b> minutes and it is <b>{{ story.active }}</b> for activity</p></div>
+    <form action = "http://127.0.0.1:5000/create_task" method = "get">
+        <input type="submit" value="Add Task" name="Create Story"/>
+    </form>
     {% endfor %}
 <!--<form action = "http://127.0.0.1:5000/create_story" method = "post">-->
 <!--        <div class="form-group">-->

@@ -48,8 +48,6 @@ def story():
 
 @app.route('/create_story', methods=['POST', 'GET', 'PUT'])
 def create_story():
-    # found = False
-    # print("lala", story)
     if request.method == 'POST':
         story = request.form
         print(type(story['check']))
