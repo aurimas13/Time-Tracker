@@ -6,11 +6,13 @@ class Story(db.Model):
     """    User Story Schema    """
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     story_name = db.Column(db.String(64), index=True, unique=True)
-    active = db.Column(db.Boolean)
+    status = db.Column(db.Boolean)
     description = db.Column(db.String(140))
     calculated_time = db.Column(db.Integer, index=True)
     # Setup the relationship to the User table
     # tasks = db.relationship('Task')
+    tasks = db.relationship('Task', backref='author', lazy='dynamic')
+
 
     def __repr__(self):
         return '<Story {} with id {}>'.format(self.story_name, self.id)
@@ -20,15 +22,14 @@ class Task(db.Model):
     """     Task Schema     """
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     story_id = db.Column(db.Integer, db.ForeignKey('story.id'))
-    task = db.Column(db.String(64), index=True, unique=True)
+    task_name = db.Column(db.String(64), index=True)
     status = db.Column(db.Boolean, default=False)
     description = db.Column(db.String(140))
-    task_estimated_time = db.Column(db.Numeric, index=True, unique=True)
-    start_date = db.Column(db.DateTime, default=datetime.utcnow, index=True, unique=True)
-    end_date = db.Column(db.DateTime, index=True, unique=True)
-    time_spent = end_date - start_date
-    task_name = db.Column(db.String(64), index=True, unique=True)
-    iteration = db.Column(db.Integer, index=True, unique=True)
+    task_estimated_time = db.Column(db.Numeric, index=True)
+    # start_date = db.Column(db.DateTime, default=datetime.utcnow, index=True)
+    # end_date = db.Column(db.DateTime, index=True)
+    # time_spent = end_date - start_date
+    iteration = db.Column(db.String(64), index=True)
     # developer_id = db.Column(db.Integer, db.ForeignKey('task.task_id')) # sitas turi buti assigninamas
 
     def __repr__(self):

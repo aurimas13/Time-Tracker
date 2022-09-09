@@ -50,9 +50,9 @@ def story():
 def create_story():
     if request.method == 'POST':
         story = request.form
-        print(type(story['check']))
+        print(story, 'check' in story)
         add_story = Story(story_name=story['story_name'],
-                          active=story['check'] == 'on',
+                          status='check' in story,
                           description=story['story_description'],
                           calculated_time=story['time'])
         print(add_story)
@@ -83,11 +83,46 @@ def create_story():
     # else:
 
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        flash('Login requested for user {}, remember_me={}'.format(
-            form.username.data, form.remember_me.data))
-        return redirect(url_for('index'))
-    return render_template('login.html',  title='Sign In', form=form)
+@app.route('/story/<id>', methods=['POST', 'GET', 'PUT'])
+def story_id(id):
+    task = {'TASK_NAME': 'Tasks'}
+    if request.method == 'GET':
+        tasks = Task.query.all()
+        # print(stories[0].story_name)
+        # return "lala"
+        return render_template('task.html', title='Tracker', task=task, tasks=tasks)
+        # return redirect(url_for('index', story=story))
+    elif request.method == 'POST':
+        if request.form.get('Create Task') == 'Create Task':
+            print('lala')
+            return redirect(url_for('create_task'))
+        else:
+            pass  # do something else
+
+
+@app.route('/story/<id>/create_task', methods=['POST', 'GET', 'PUT'])
+def create_task():
+    if request.method == 'POST':
+        task = request.form
+        print(type(task['check']))
+        add_task = Task(task_name=task['task_name'],
+                         status=task['check'] == 'on',
+                         description=task['task_description'],
+                         task_estimated_time=task['time'],
+                         iteration=task['iter'])
+        print(add_task)
+#         # db.session.add(add_task)
+#         # db.session.commit()
+        return redirect(url_for('/story/<id>'))
+#
+    return render_template('create_task.html', title='Tracker')
+
+
+# @app.route('/login', methods=['GET', 'POST'])
+# def login():
+#     form = LoginForm()
+#     if form.validate_on_submit():
+#         flash('Login requested for user {}, remember_me={}'.format(
+#             form.username.data, form.remember_me.data))
+#         return redirect(url_for('index'))
+#     return render_template('login.html',  title='Sign In', form=form)
