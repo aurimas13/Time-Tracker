@@ -16,29 +16,10 @@
     <form action = "http://127.0.0.1:5000/story/{{ story.id }}" method = "get">
         <input type="submit" value="See Story" name="See Story"/>
     </form>
+    <form action = "http://127.0.0.1:5000/story/{{ story.id }}/update_story" method = "get">
+        <input type="submit" value="Update Story" name="Update Story"/>
+    </form>
     {% endfor %}
-<!--<form action = "http://127.0.0.1:5000/create_story" method = "post">-->
-<!--        <div class="form-group">-->
-<!--            <label for="firstName">Firstname</label>-->
-<!--            <input type="text" class="form-control" id="firstNameId" name="firstName" aria-describedby="firstNameHelp" placeholder="James">-->
-<!--            <small id="firstNameHelp" class="form-text text-muted"></small>-->
-<!--        </div>-->
-
-<!--        <div class="form-group">-->
-<!--            <label for="lastName">Lastname</label>-->
-<!--            <input type="text" class="form-control" id="lastNameId" name="lastName" aria-describedby="lastNameHelp" placeholder="Dean">-->
-<!--            <small id="lastNameHelp" class="form-text text-muted"></small>-->
-<!--        </div>-->
-
-<!--        <div class="form-group">-->
-<!--            <label for="emailAddress">Email Address</label>-->
-<!--            <input type="email" class="form-control" id="emailAddressId" name="emailAddress" aria-describedby="emailAddressHelp" placeholder="jdean@example.com">-->
-<!--            <small id="emailAddressHelp" class="form-text text-muted"></small>-->
-<!--        </div>-->
-
-<!--        <button type="submit" class="btn btn-primary">Submit</button>-->
-
-<!--    </form>-->
     <h3>Want to create a story?<h3/>
     <form action = "http://127.0.0.1:5000/create_story" method = "get">
         <input type="submit" value="Create Story" name="Create Story"/>

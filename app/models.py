@@ -5,12 +5,10 @@ from app import db
 class Story(db.Model):
     """    User Story Schema    """
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    story_name = db.Column(db.String(64), index=True, unique=True)
+    story_name = db.Column(db.String(64), index=True)
     status = db.Column(db.Boolean)
     description = db.Column(db.String(140))
     calculated_time = db.Column(db.Integer, index=True)
-    # Setup the relationship to the User table
-    # tasks = db.relationship('Task')
     tasks = db.relationship('Task', backref='author', lazy='dynamic')
 
 
@@ -20,7 +18,7 @@ class Story(db.Model):
 
 class Task(db.Model):
     """     Task Schema     """
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    task_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     story_id = db.Column(db.Integer, db.ForeignKey('story.id'))
     task_name = db.Column(db.String(64), index=True)
     status = db.Column(db.Boolean, default=False)
@@ -33,7 +31,7 @@ class Task(db.Model):
     # developer_id = db.Column(db.Integer, db.ForeignKey('task.task_id')) # sitas turi buti assigninamas
 
     def __repr__(self):
-        return '<Task {} of story id {} with task id {}>'.format(self.story_id, self.task_name, self.id)
+        return '<Task {} of story id {} with task id {}>'.format(self.story_id, self.task_name, self.task_id)
 
 
 class Developer(db.Model):

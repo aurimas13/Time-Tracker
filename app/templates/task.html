@@ -20,16 +20,16 @@
     </table>
     <h1>{{ task.task_name }}!</h1>
     {% for task in tasks %}
-    <div><p>{{ task.task_name }}: <b>{{ task.task_description }}</b></p></div>
-    <div><p>Task ID: <b>{{ task.id }}</b></p></div>
-    <div><p>To complete it would take <b>{{ task.task_estimated_time }}</b> minutes and it is <b>{{ task.status }}</b> for activity</p></div>
-    <h3>Add a task<h3/>
-    <form action = "http://127.0.0.1:5000/story/{{ story.id }}/create_task" method = "get">
-        <input type="submit" value="Create Task" name="Create Task"/>
+    <div><p>{{ task.task_name }}: <b>{{ task.description }}</b></p></div>
+    <div><p>Task ID: <b>{{ task.task_id }}</b></p></div>
+    <div><p>To complete it would take <b>{{ task.task_estimated_time }}</b> minutes and it is <b>{{ task.status }}</b> for activity that has {{ task.iteration }} for iteration</p></div>
+    <form action = "http://127.0.0.1:5000/story/{{ id }}/update_task/{{ task.task_id }}" method = "put">
+        <input type="submit" value="Update Task" name="Update Task"/>
     </form>
+    </p></div>
     {% endfor %}
-    <h3>Add task?<h3/>
-    <form action = "http://127.0.0.1:5000/story/{{ story.id }}/create_task" method = "get">
-        <input type="submit" value="Create Task" name="Create Task"/>
+    <h4>Want to add a new task? <h4/>
+    <form action = "http://127.0.0.1:5000/story/{{ id }}/create_task" method = "get">
+        <input type="submit" value="Add Task" name="Add Task"/>
     </form>
 {% endblock %}
