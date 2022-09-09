@@ -30,7 +30,7 @@ def index():
         return render_template('index.html', title='Home', story=story, stories=stories)
 
 
-@app.route('/story', methods=['POST', 'GET', 'PUT'])
+@app.route('/story', methods=['POST', 'GET'])
 def story():
     story = {'STORY_NAME': 'Stories'}
     if request.method == 'GET':
@@ -44,7 +44,7 @@ def story():
     #         pass  # do something else
 
 
-@app.route('/story/<id>', methods=['POST', 'GET', 'PUT'])
+@app.route('/story/<id>', methods=['POST', 'GET'])
 def story_id(id):
     task = {'TASK_NAME': 'Tasks'}
     if request.method == 'GET':
@@ -59,7 +59,7 @@ def story_id(id):
     #         pass  # do something else
 
 
-@app.route('/create_story', methods=['POST', 'GET', 'PUT'])
+@app.route('/create_story', methods=['POST', 'GET'])
 def create_story():
     if request.method == 'POST':
         story = request.form
@@ -76,14 +76,14 @@ def create_story():
     return render_template('create_story.html', title='Tracker')
 
 
-@app.route('/story/<id>/update_story', methods=['POST', 'GET', 'PUT'])
+@app.route('/story/<id>/update_story', methods=['POST', 'GET'])
 def update_story(id):
     if request.method == 'GET':
         stories = Story.query.filter_by(id=id)
         story = Story.query.get(id)
         return render_template('update_story.html', title='Tracker', story=story, stories=stories)
 
-    elif request.method == 'PUT':
+    elif request.method == 'POST':
         # return 'jaa'
         item = Story.query.get(id)
         print(item)
@@ -91,15 +91,14 @@ def update_story(id):
         item.status = 'check' in request.form
         item.description = request.form['story_description']
         item.calculated_time = request.form['time']
-        # item.story_name = '2'
         db.session.add(item)
         db.session.commit()
-        return redirect(url_for('story_id', id=id))
+        return redirect(url_for('story'))
     #
     # return render_template('create_story.html', form=form)
 
 
-@app.route('/story/<id>/create_task', methods=['POST', 'GET', 'PUT'])
+@app.route('/story/<id>/create_task', methods=['POST', 'GET'])
 def create_task(id):
     if request.method == 'POST':
         task = request.form
@@ -118,14 +117,14 @@ def create_task(id):
     return render_template('create_task.html', title='Tracker')
 
 
-@app.route('/story/<story_id>/update_task/<task_id>', methods=['POST', 'GET', 'PUT'])
+@app.route('/story/<story_id>/update_task/<task_id>', methods=['POST', 'GET'])
 def update_task(story_id, task_id):
     if request.method == 'GET':
         # tasks = Task.query.filter_by(id=task_id)
         task = Task.query.get(task_id)
         return render_template('update_task.html', title='Tracker', task=task)
 
-    elif request.method == 'PUT':
+    elif request.method == 'POST':
         # return 'kasdkask'
         item = Task.query.get(task_id)
         print(item)

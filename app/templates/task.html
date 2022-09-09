@@ -23,7 +23,7 @@
     <div><p>{{ task.task_name }}: <b>{{ task.description }}</b></p></div>
     <div><p>Task ID: <b>{{ task.task_id }}</b></p></div>
     <div><p>To complete it would take <b>{{ task.task_estimated_time }}</b> minutes and it is <b>{{ task.status }}</b> for activity that has {{ task.iteration }} for iteration</p></div>
-    <form action = "http://127.0.0.1:5000/story/{{ id }}/update_task/{{ task.task_id }}" method = "put">
+    <form action = "http://127.0.0.1:5000/story/{{ id }}/update_task/{{ task.task_id }}" method = "get">
         <input type="submit" value="Update Task" name="Update Task"/>
     </form>
     </p></div>
