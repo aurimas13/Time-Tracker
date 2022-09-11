@@ -5,6 +5,7 @@ DONE 2) Actual time calculated for tasks
 DONE 5) Task have fields developer and iteration
 6) Program calculates and sumarrizes all developers estimated and actual time for story/task
 7) Developers are chosen from drop-down menu
+8) Parasyti if if nulis
 
 Padaryti Agile proceso taskų ir storių laiko trackerį. Storiai ir taskai estimuojami atskirai, o sugaištas laikas registruojamas taskams.
 Taskams galima pridėti po kelis įrašus sugaišto laiko. Storių sugaištas laikas skaičiuojamas susumavus taskų sugaištą laiką.

@@ -3,6 +3,7 @@ from app import app, db
 from app.forms import LoginForm, StoryForm, TaskForm
 from app.models import Story, Task, Developer, TaskActualTimes
 from sqlalchemy import update
+from itertools import groupby
 
 @app.route('/', methods=['POST','GET'])
 @app.route('/index', methods=['POST','GET'])
@@ -48,8 +49,46 @@ def story():
 def story_id(id):
     task = {'TASK_NAME': 'Tasks'}
     if request.method == 'GET':
-        tasks = Task.query.filter_by(story_id=id).join(TaskActualTimes).all()
-        print(tasks.keys())
+        # tasks = db.session.query(Task).filter_by(...).join(TaskActualTimes)
+        # tasks = db.session.query(Task).filter_by(story_id=id).join(TaskActualTimes).all()
+        query_result = db.session.query(Task, TaskActualTimes).filter(
+            Task.story_id == id).filter(
+            Task.task_id == TaskActualTimes.task_id).all()
+        # print(tasks[0].__dict__)
+        # tasks = query_result
+        # tasks['actual_times'] = query_result[1]
+        tasks = {}
+        for row in query_result:
+            item = row[0].__dict__
+            # item['actual_times'] = row[1].__dict__
+            # f = row[1].__dict__
+            # # print(item)
+            # tasks.append(item)
+            if item['task_id'] in tasks:
+                tasks[item['task_id']]['actual_times'].append(row[1].__dict__)
+            else:
+                tasks[item['task_id']] = row[0].__dict__
+                tasks[item['task_id']]['actual_times'] = list(row[1].__dict__)
+
+        tasks = tasks.values()
+        # for key in tasks:
+        #     print(key)
+        #     print(tasks[key])
+        # print(groupby(tasks, 'task_id'))
+        # tasks = sorted(tasks, key=lambda x: x['task_id'])
+        # items=[]
+        # for key, value in groupby(tasks, lambda x: x['task_id']):
+        #     print(key)
+        #     print(list(value))
+        #     print()
+        #     item = {}
+        #     for i in value:
+        #         items.append['actual_time']
+        # print(len(tasks))
+        # for row in tasks:
+        #     print(row)
+            # for key in row:
+            #     print(key)
         return render_template('task.html', title='Tracker', id=id, task=task, tasks=tasks)
     # elif request.method == 'POST':
     #     if request.form.get('Create Task') == 'Create Task':
@@ -141,8 +180,14 @@ def update_task(story_id, task_id):
         item.status = 'check' in request.form
         item.description = request.form['task_description']
         item.estimated_time = request.form['time']
-        item.actual_time = request.form['actual_time'] # MAKE SURE TIMES ARE ADDED not overwritten
+        # item.actual_time = request.form['actual_time'] # MAKE SURE TIMES ARE ADDED not overwritten
         item.iteration = request.form['iter']
+        if request.form['actual_time'] != '0':
+            time = TaskActualTimes(
+                task_id=item.task_id,
+                actual_time=request.form['actual_time']
+            )
+        db.session.add(time)
         db.session.add(item)
         db.session.commit()
         return redirect(url_for('story_id', id=story_id))
