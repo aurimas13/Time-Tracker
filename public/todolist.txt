@@ -1,0 +1,21 @@
+DONE 1) Task & Stories time estimated separately
+DONE 2) Actual time calculated for tasks
+3) Tasks can have more than one actual time
+4) Story actual time is calculated while adding all actual times of tasks
+DONE 5) Task have fields developer and iteration
+6) Program calculates and sumarrizes all developers estimated and actual time for story/task
+7) Developers are chosen from drop-down menu
+
+Padaryti Agile proceso taskų ir storių laiko trackerį. Storiai ir taskai estimuojami atskirai, o sugaištas laikas registruojamas taskams.
+Taskams galima pridėti po kelis įrašus sugaišto laiko. Storių sugaištas laikas skaičiuojamas susumavus taskų sugaištą laiką.
+Taskas turi lauką 'developeris' ir 'iteracija', programa skaičiuoja ir apibendrina visų developerių estimuotą ir realiai atliktą darbą.
+Developeriai pasirenkami iš dropdowno.
+
+Atlikti tai galima naudojant kažkokią Web platformą Flask ir t.t., pageidautina su su unit testais ir funkciniais testais.
+Papildomiems taškams galima pabandyti panaudoti ir front-end platformą, pvz., React.
+
+Mūsų vertinimu, tokios užduotėlės atlikimas turėtų užtrukti apie 2 darbo dienas gryno darbo.
+
+Lauksime nuorodos į repozitoriją!
+
+Laurynas

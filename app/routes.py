@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
 from app.forms import LoginForm, StoryForm, TaskForm
-from app.models import Story, Task, Developer
+from app.models import Story, Task, Developer, TaskActualTimes
 from sqlalchemy import update
 
 @app.route('/', methods=['POST','GET'])
@@ -48,8 +48,8 @@ def story():
 def story_id(id):
     task = {'TASK_NAME': 'Tasks'}
     if request.method == 'GET':
-        tasks = Task.query.filter_by(story_id=id)
-        print(tasks)
+        tasks = Task.query.filter_by(story_id=id).join(TaskActualTimes).all()
+        print(tasks.keys())
         return render_template('task.html', title='Tracker', id=id, task=task, tasks=tasks)
     # elif request.method == 'POST':
     #     if request.form.get('Create Task') == 'Create Task':
@@ -67,7 +67,7 @@ def create_story():
         add_story = Story(story_name=story['story_name'],
                           status='check' in story,
                           description=story['story_description'],
-                          calculated_time=story['time'])
+                          estimated_time=story['time'])
         print(add_story)
         db.session.add(add_story)
         db.session.commit()
@@ -90,7 +90,7 @@ def update_story(id):
         item.story_name = request.form['story_name']
         item.status = 'check' in request.form
         item.description = request.form['story_description']
-        item.calculated_time = request.form['time']
+        item.estimated_time = request.form['time']
         db.session.add(item)
         db.session.commit()
         return redirect(url_for('story'))
@@ -102,15 +102,23 @@ def update_story(id):
 def create_task(id):
     if request.method == 'POST':
         task = request.form
+        task_actual = request.form
         add_task = Task(
             task_name=task['task_name'],
             story_id=id,
             status=task['check'] == 'on',
             description=task['task_description'],
-            task_estimated_time=task['time'],
+            estimated_time=task['time'],
             iteration=task['iter'])
         print(add_task)
         db.session.add(add_task)
+        db.session.flush()
+        db.session.refresh(add_task)
+        time = TaskActualTimes(
+            task_id=add_task.task_id,
+            actual_time=task['actual_time']
+        )
+        db.session.add(time)
         db.session.commit()
         return redirect(url_for('story_id', id=id))
 #
@@ -132,7 +140,8 @@ def update_task(story_id, task_id):
         item.story_id = story_id
         item.status = 'check' in request.form
         item.description = request.form['task_description']
-        item.task_estimated_time = request.form['time']
+        item.estimated_time = request.form['time']
+        item.actual_time = request.form['actual_time'] # MAKE SURE TIMES ARE ADDED not overwritten
         item.iteration = request.form['iter']
         db.session.add(item)
         db.session.commit()

@@ -4,7 +4,7 @@
         <form method="POST">
             <div><p>{{ story.story_name }}: <b>{{ story.description }}</b></p></div>
             <div><p>Story ID: <b>{{ story.id }}</b></p></div>
-            <div><p>To complete it would take <b>{{ story.calculated_time }}</b> minutes and it is <b>{{ story.status }}</b> for activity</p></div>
+            <div><p>To complete it would take <b>{{ story.estimated_time }}</b> minutes and it is <b>{{ story.status }}</b> for activity</p></div>
             <p>
                 <label for="name">Story Name</label>
                 <input id="name" name="story_name" type="text" value="{{ story.story_name }}">
@@ -15,7 +15,7 @@
             </p>
             <p>
                 <label for="time_expected">Time expected to complete story</label>
-                <input id="time_expected" name="time" type="number" value="{{ story.calculated_time }}">
+                <input id="time_expected" name="time" type="number" value="{{ story.estimated_time }}">
             </p>
             <p>
                 <label for="act">Status</label>
