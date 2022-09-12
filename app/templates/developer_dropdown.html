@@ -1,0 +1,13 @@
+{% block content %}
+    <h7></h7>
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"> Please select a developer: </span>
+            <select name="comp_select" class="selectpicker form-control">
+                {% for developer in developers %}
+                    <option value="{{ developer.id }}">{{ developer.name}}</option>
+                {% endfor %}
+            </select>`
+        </div>
+    </div>
+{% endblock %}

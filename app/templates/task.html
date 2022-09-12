@@ -1,39 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <title>Tasks</title>
-    <table>
-        <tr>
-            <th style="background-color: yellow">Task</th>
-            <th style="background-color: green">Added</th>
-            <th style="background-color: red">Actions</th>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td>
-                <a href="">Delete</a>
-                <br>
-                <a href="">Update</a>
-             </td>
-        </tr>
-    </table>
-    <h1>{{ task.task_name }}!</h1>
-    {% for task in tasks %}
-    <div><p>{{ task.task_name }}: <b>{{ task.description }}</b></p></div>
+<h1>Tasks of {{story.story_name}}</h1>
+<div><p>Total time to complete a story - <b>{{story.story_name}}</b> is <b>{{story_actual_time}}</b> hours.</p></div>
+{% for task in tasks %}
+    <div><p><b>{{ task.task_name }}</b>: <b>{{ task.description }}</b></p></div>
     <div><p>Task ID: <b>{{ task.task_id }}</b></p></div>
-    <div><p>To complete it would take <b>{{ task.estimated_time }}</b> minutes and it is <b>{{ task.status }}</b> for activity that has {{ task.iteration }} for iteration</p></div>
-    <div><p>Total time taken to complete the task - {{task.actual_times}}</p></div>
-    {% for time in task.actual_times %}
-    <div><p>Total time taken to complete the task - {{time.actual_time}}</p></div>
-    {% endfor %}
-    <form action = "http://127.0.0.1:5000/story/{{ id }}/update_task/{{ task.task_id }}" method = "get">
-        <input type="submit" value="Update Task" name="Update Task"/>
-    </form>
-    </p></div>
-    {% endfor %}
-    <h4>Want to add a new task? <h4/>
-    <form action = "http://127.0.0.1:5000/story/{{ id }}/create_task" method = "get">
-        <input type="submit" value="Add Task" name="Add Task"/>
-    </form>
+    <div><p>To complete the story is estimated to take  <b>{{ task.estimated_time }}</b> hours and it is <b>{{ task.status }}</b> for activity that has <b>{{ task.iteration }}</b> for iteration.</p></div>
+    <div><p>Total time taken to complete the task is <b>{{task.actual_times_sum}}</b> hours.</p></div>
+{% for time in task.actual_times %}
+    <div><p>Total time to complete one task is <b>{{time.actual_time}}</b> hours.</p></div>
+{% endfor %}
+<form action = "http://127.0.0.1:5000/story/{{ id }}/update_task/{{ task.task_id }}" method = "get">
+    <input type="submit" value="Update Task" name="Update Task"/>
+</form>
+</p></div>
+{% endfor %}
+<h4>Want to add a new task? <h4/>
+<form action = "http://127.0.0.1:5000/story/{{ id }}/create_task" method = "get">
+    <input type="submit" value="Add Task" name="Add Task"/>
+</form>
 {% endblock %}

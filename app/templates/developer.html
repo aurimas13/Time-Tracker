@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Developer Summary</h1>
+    {% for developer in developers %}
+    <div><p>For developer <b>{{ developer.name }}</b> to complete the story of all tasks within it it is estimated to take  <b>{{ developer.estimated_time }}</b> hours.</p></div>
+    <div><p>However, the total actual taken time to complete the story is <b>{{developer.actual_times_sum}}</b> hours.</p></div>
+    {% endfor %}
+{% endblock %}

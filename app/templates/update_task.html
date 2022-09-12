@@ -1,40 +1,42 @@
-<html>
-    <body>
-        <h1>Update Task</h1>
-        <form method="POST">
-            <div><p>{{ task.task_name }}: <b>{{ task.description }}</b></p></div>
-            <div><p>Task ID: <b>{{ task.task_id }}</b></p></div>
-            <div><p>To complete it would take <b>{{ task.estimated_time }}</b> minutes and it is <b>{{ task.status }}</b> for activity that has {{ task.iteration }} for iteration</p></div>
-            {% for time in times %}
-            <div><p>Total time taken to complete the task - {{TaskActualTimes.actual_time}}</p></div>
-            {% endfor %}
-            <p>
-                <label for="name">Task Name</label>
-                <input id="name" name="task_name" type="text" value="{{ task.task_name }}">
-            </p>
-            <p>
-                <label for="description">Task Description</label>
-                <input id="description" name="task_description" type="text" value="{{ task.description }}">
-            </p>
-            <p>
-                <label for="time_estimated">Time expected to complete task</label>
-                <input id="time_estimated" name="time" type="number" value="{{ task.estimated_time}}">
-            </p>
-             <p>
-                <label for="iteration">Iteration</label>
-                <input id="iteration" name="iter" type="text" value="{{ task.iteration }}">
-            </p>
-            <p>
-                <label for="time_actual">Time taken to complete task</label>
-                <input id="time_actual" name="actual_time" type="number" value="{{ task.actual_time}}">
-            </p>
-            <p>
-                <label for="act">Status</label>
-                <input id="act" type="checkbox" name="check" value="{{ task.status }}">
-<!--                <input id="act" type="checkbox" name="check">-->
-<!--                <input id="act" type="hidden" name="check" value="false">-->
-            </p>
-            <input type="submit" value="Update Task">
-        </form>
-    </body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Update Task</h1>
+    <form method="POST">
+        <div><p>{{ task.task_name }}: <b>{{ task.description }}</b></p></div>
+        <div><p>Task ID: <b>{{ task.task_id }}</b></p></div>
+        <div><p>To complete it would take <b>{{ task.estimated_time }}</b> minutes and it is <b>{{ task.status }}</b> for activity that has {{ task.iteration }} for iteration</p></div>
+        {% for time in times %}
+        <div><p>Total time taken to complete the task - {{time.actual_time}}</p></div>
+        {% endfor %}
+        <p>
+            <label for="name">Task Name:</label>
+            <input id="name" name="task_name" type="text" value="{{ task.task_name }}">
+        </p>
+        <p>
+            <label for="description">Task Description:</label>
+            <input id="description" name="task_description" type="text" value="{{ task.description }}">
+        </p>
+        <p>
+            <label for="time_estimated">Time expected to complete the task in hours:</label>
+            <input id="time_estimated" name="time" type="number" value="{{ task.estimated_time}}">
+        </p>
+        <p>
+            <label for="time_actual">Time taken to complete the task in hours:</label>
+            <input id="time_actual" name="actual_time" type="number" value="{{ task.actual_time}}">
+        </p>
+        <p>
+            <label for="iteration">Iteration:</label>
+            <input id="iteration" name="iter" type="text" value="{{ task.iteration }}">
+        </p>
+        <p>
+            <label for="act">Status</label>
+            <input id="act" type="checkbox" name="check" value="{{ task.status }}">
+    <!--                <input id="act" type="checkbox" name="check">-->
+    <!--                <input id="act" type="hidden" name="check" value="false">-->
+        </p>
+        {% include "developer_dropdown.html" %}
+        <p></p>
+        <input type="submit" value="Update Task">
+    </form>
+{% endblock %}

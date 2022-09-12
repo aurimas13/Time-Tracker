@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Add Developer</h1>
+<form method="POST">
+    <p>
+        <label for="name">Developer name:</label>
+        <input id="name" name="developer_name" type="text">
+    </p>
+   <input type="submit" value="Add Developer">
+</form>
+{% endblock %}

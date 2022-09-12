@@ -1,28 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>{{ story.STORY_NAME }}</h1>
-    <table>
-        <task>
-            <th>Task</th>
-            <th>Added</th>
-            <th>Actions</th>
-        </task>
-    </table>
-    {% for story in stories %}
-    <div><p>{{ story.story_name }}: <b>{{ story.description }}</b></p></div>
-    <div><p>Story ID: <b>{{ story.id }}</b></p></div>
-    <div><p>To complete it would take <b>{{ story.estimated_time }}</b> minutes and it is <b>{{ story.status }}</b> for activity</p></div>
-    <form action = "http://127.0.0.1:5000/story/{{ story.id }}" method = "get">
-        <input type="submit" value="See Story" name="See Story"/>
-    </form>
-    <form action = "http://127.0.0.1:5000/story/{{ story.id }}/update_story" method = "get">
-        <input type="submit" value="Update Story" name="Update Story"/>
-    </form>
-    {% endfor %}
-    <h3>Want to create a story?<h3/>
-    <form action = "http://127.0.0.1:5000/create_story" method = "get">
-        <input type="submit" value="Create Story" name="Create Story"/>
-    </form>
-<!--        <input type=button href="{{url_for('create_story')}}" value='click here', name='action1'>-->
+<h1>{{ story.STORY_NAME }}</h1>
+{% for story in stories %}
+<div><p>Story {{ story.story_name }}: <b>{{ story.description }}</b></p></div>
+<div><p>Story ID: <b>{{ story.id }}</b></p></div>
+<div><p>To complete the story is estimated to take <b>{{ story.estimated_time }}</b> hours and it is <b>{{ story.status }}</b> for activity.</p></div>
+<div><p>Total time to complete a story - <b>{{story.story_name}}</b> is <b>{{story_actual_time}}</b> hours.</p></div>
+<form action = "http://127.0.0.1:5000/story/{{ story.id }}" method = "get">
+    <input type="submit" value="See Story" name="See Story"/>
+</form>
+<p></p>
+<form action = "http://127.0.0.1:5000/story/{{ story.id }}/update_story" method = "get">
+    <input type="submit" value="Update Story" name="Update Story"/>
+</form>
+{% endfor %}
+<h3>Want to create a story?<h3/>
+<form action = "http://127.0.0.1:5000/create_story" method = "get">
+    <input type="submit" value="Create Story" name="Create Story"/>
+</form>
+<h3>Want to add a developer?<h3/>
+<form action = "http://127.0.0.1:5000/create_developer" method = "get">
+    <input type="submit" value="Add Developer" name="Add Developer"/>
+</form>
 {% endblock %}

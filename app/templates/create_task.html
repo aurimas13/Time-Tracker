@@ -1,33 +1,35 @@
-<html>
-    <body>
-        <h1>Create Task</h1>
-        <form method="POST">
-            <p>
-                <label for="name">Task Name</label>
-                <input id="name" name="task_name" type="text">
-            </p>
-            <p>
-                <label for="description">Task Description</label>
-                <input id="description" name="task_description" type="text">
-            </p>
-            <p>
-                <label for="time_estimated">Time expected to complete task</label>
-                <input id="time_estimated" name="time" type="number">
-            </p>
-             <p>
-                <label for="time_actual">Time taken to complete task</label>
-                <input id="time_actual" name="actual_time" type="number">
-            </p>
-            <p>
-                <label for="iteration">Iteration</label>
-                <input id="iteration" name="iter" type="text">
-            </p>
-            <p>
-                <label for="act">Status</label>
-                <input id="act" type="checkbox" name="check">
-                <input id="act" type="hidden" name="check" value="false">
-            </p>
-            <input type="submit" value="Create Task">
-        </form>
-    </body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Create Task</h1>
+<form method="POST">
+    <p>
+        <label for="name">Task Name</label>
+        <input id="name" name="task_name" type="text">
+    </p>
+    <p>
+        <label for="description">Task Description:</label>
+        <input id="description" name="task_description" type="text">
+    </p>
+    <p>
+        <label for="time_estimated">Time expected to complete the task in hours:</label>
+        <input id="time_estimated" name="time" type="number">
+    </p>
+     <p>
+        <label for="time_actual">Time taken to complete the task in hours:</label>
+        <input id="time_actual" name="actual_time" type="number">
+    </p>
+    <p>
+        <label for="iteration">Iteration:</label>
+        <input id="iteration" name="iter" type="text">
+    </p>
+    <p>
+        <label for="act">Status</label>
+        <input id="act" type="checkbox" name="check">
+        <input id="act" type="hidden" name="check" value="false">
+    </p>
+    {% include "developer_dropdown.html" %}
+    <p></p>
+    <input type="submit" value="Create Task">
+</form>
+{% endblock %}

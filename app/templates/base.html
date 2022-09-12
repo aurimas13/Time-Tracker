@@ -1,20 +1,23 @@
 <!doctype html>
 <html>
     <head>
-        {% if title %}
-        <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/examples/starter-template/starter-template.css">
-        <link rel="icon" href="https://getbootstrap.com/docs/4.0/assets/img/favicons/favicon.ico">
-        <title>{{ title }} - Time Tracker</title>
-        {% else %}
-        <title>Welcome to Time Tracker</title>
-        {% endif %}
-    </head>
+        <title>Time Tracker</title>
+<!--        {% if title %}-->
+<!--        <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css">-->
+<!--        <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/examples/starter-template/starter-template.css">-->
+<!--        <link rel="icon" href="https://getbootstrap.com/docs/4.0/assets/img/favicons/favicon.ico">-->
+<!--        <title>{{ title }} - Time Tracker</title>-->
+<!--        {% else %}-->
+<!--        <title>Welcome to Time Tracker</title>-->
+<!--        {% endif %}-->
+<!--    </head>-->
     <body>
        <div>
-        Tracker:
-            <a href="{{ url_for('index') }}">Home</a>
             <a href="{{ url_for('story') }}">Story</a>
+            <a href="{{ url_for('create_story') }}">Create Story</a>
+            <a href="{{ url_for('create_developer') }}">Add Developer</a>
+            <a href="{{ url_for('developer_summary') }}">Developer summary</a>
+<!--            <a href="{{ url_for('index') }}">Home</a>-->
 <!--            <a href="{{ url_for('create_story') }}">Create Story</a>-->
         </div>
         <hr>
