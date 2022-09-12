@@ -1,8 +1,8 @@
 """stories tasks and developers table
 
-Revision ID: 21eab91800aa
+Revision ID: 79aeefcc0e08
 Revises: 
-Create Date: 2022-09-11 15:11:14.653229
+Create Date: 2022-09-12 10:10:22.572479
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '21eab91800aa'
+revision = '79aeefcc0e08'
 down_revision = None
 branch_labels = None
 depends_on = None

@@ -23,8 +23,9 @@
     <div><p>{{ task.task_name }}: <b>{{ task.description }}</b></p></div>
     <div><p>Task ID: <b>{{ task.task_id }}</b></p></div>
     <div><p>To complete it would take <b>{{ task.estimated_time }}</b> minutes and it is <b>{{ task.status }}</b> for activity that has {{ task.iteration }} for iteration</p></div>
-    {% for time in times %}
-    <div><p>Total time taken to complete the task - {{TaskActualTimes.actual_time}}</p></div>
+    <div><p>Total time taken to complete the task - {{task.actual_times}}</p></div>
+    {% for time in task.actual_times %}
+    <div><p>Total time taken to complete the task - {{time.actual_time}}</p></div>
     {% endfor %}
     <form action = "http://127.0.0.1:5000/story/{{ id }}/update_task/{{ task.task_id }}" method = "get">
         <input type="submit" value="Update Task" name="Update Task"/>
