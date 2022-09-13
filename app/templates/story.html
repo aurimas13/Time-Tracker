@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>{{ story.STORY_NAME }}</h1>
+<h1>{{ title }}</h1>
 {% for story in stories %}
-<div><p>Story {{ story.story_name }}: <b>{{ story.description }}</b></p></div>
-<div><p>Story ID: <b>{{ story.id }}</b></p></div>
-<div><p>To complete the story is estimated to take <b>{{ story.estimated_time }}</b> hours and it is <b>{{ story.status }}</b> for activity.</p></div>
-<div><p>Total time to complete a story - <b>{{story.story_name}}</b> is <b>{{story_actual_time}}</b> hours.</p></div>
+<div><p>To complete the story <b>{{ story.story_name }}</b> it is estimated to take <b>{{ story.estimated_time }}</b> hours.</p></div>
+<div><p>Total time to complete the story <b>{{story.story_name}}</b> takes <b>{{story.actual_times_sum}}</b> hours.</p></div>
+<div><p>Description of the story <b>{{ story.story_name }}</b>: <b>{{ story.description }}</b></p></div>
+<div><p>The status of story <b>{{ story.story_name }}</b> is <b>{{ story.status }}</b> for completion.</p></div>
 <form action = "http://127.0.0.1:5000/story/{{ story.id }}" method = "get">
     <input type="submit" value="See Story" name="See Story"/>
 </form>

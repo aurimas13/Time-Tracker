@@ -1,4 +1,3 @@
-from datetime import datetime
 from app import db
 
 
@@ -9,8 +8,6 @@ class Story(db.Model):
     status = db.Column(db.Boolean)
     description = db.Column(db.String(140))
     estimated_time = db.Column(db.Integer)
-    tasks = db.relationship('Task', backref='author', lazy='dynamic')
-
 
     def __repr__(self):
         return '<Story {} with id {}>'.format(self.story_name, self.id)
