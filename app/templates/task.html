@@ -2,12 +2,12 @@
 
 {% block content %}
 <h1>Tasks of Story {{story.story_name}}</h1>
-<div><p>Total time to complete all tasks of a story <b>{{story.story_name}}</b> takes <b>{{story_actual_time}}</b> hours.</p></div>
+<div><p>Total time to complete all tasks of a story <b>{{story.story_name}}</b> takes <b>{{story.actual_times_sum}}</b> hours.</p></div>
 <div></div>
 <div></div>
 {% for task in tasks %}
     <div><p>Description of the task <b>{{ task.task_name }}</b>: <b>{{ task.description }}</b>.</p></div>
-    <div><p>To complete the task <b>{{ task.task_name }}</b> it is estimated to take <b>{{ task.estimated_time }} </b> hours</b>.</p></div>
+    <div><p>The estimated points for the task <b>{{ task.task_name }}</b> is <b>{{ task.estimated_points }} </b> points</b>.</p></div>
     <div><p>Total time taken to complete the task is <b>{{task.actual_times_sum}}</b> hours</b>.</p></div>
     <div><p>The task has <b>{{ task.status }}</b> status for completion as iteration is given as <b>{{ task.iteration }}</b>.</p></div>
 <h3>Individual times spent of task <b>{{ task.task_name }}</b> for completion:</h3>

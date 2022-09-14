@@ -25,7 +25,11 @@ def story_id(id):
         query_result = db.session.query(Task, TaskActualTimes).filter(
             Task.story_id == id).filter(
             Task.task_id == TaskActualTimes.task_id).all()
+        query_result_2 = db.session.query(Story, Task, TaskActualTimes).join(
+            Task, Story.id == Task.story_id, isouter=True).join(
+            TaskActualTimes, Task.task_id == TaskActualTimes.task_id, isouter=True).all()
         tasks = get_task_values(query_result)
+        stories = get_story_values(query_result_2)
         return render_template('task.html', title='Tracker', id=id, story=story, tasks=tasks)
 
 
@@ -36,7 +40,7 @@ def create_story():
         add_story = Story(story_name=story['story_name'],
                           status='check' in story,
                           description=story['story_description'],
-                          estimated_time=story['time'])
+                          estimated_points=story['estimated_points'])
         db.session.add(add_story)
         db.session.commit()
         return redirect(url_for('story'))
@@ -56,7 +60,7 @@ def update_story(id):
         item.story_name = request.form['story_name']
         item.status = 'check' in request.form
         item.description = request.form['story_description']
-        item.estimated_time = request.form['time']
+        item.estimated_points = request.form['estimated_points']
         db.session.add(item)
         db.session.commit()
         return redirect(url_for('story'))
@@ -90,7 +94,7 @@ def create_task(id):
             status=task['check'] == 'on',
             description=task['task_description'],
             developer_id=dev_id,
-            estimated_time=task['time'],
+            estimated_points=task['estimated_points'],
             iteration=task['iter'])
         db.session.add(add_task)
         db.session.flush()
@@ -124,7 +128,7 @@ def update_task(story_id, task_id):
         item.developer_id = dev_id
         item.status = 'check' in request.form
         item.description = request.form['task_description']
-        item.estimated_time = request.form['time']
+        item.estimated_points = request.form['estimated_points']
         item.iteration = request.form['iter']
         if request.form['actual_time'] != '0' and request.form['actual_time'] != '':
             time = TaskActualTimes(

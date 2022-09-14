@@ -7,7 +7,7 @@ class Story(db.Model):
     story_name = db.Column(db.String(64))
     status = db.Column(db.Boolean)
     description = db.Column(db.String(140))
-    estimated_time = db.Column(db.Integer)
+    estimated_points = db.Column(db.Integer)
 
     def __repr__(self):
         return '<Story {} with id {}>'.format(self.story_name, self.id)
@@ -20,7 +20,7 @@ class Task(db.Model):
     task_name = db.Column(db.String(64))
     status = db.Column(db.Boolean, default=False)
     description = db.Column(db.String(140))
-    estimated_time = db.Column(db.Integer)
+    estimated_points = db.Column(db.Integer)
     developer_id = db.Column(db.Integer, db.ForeignKey('developer.id')) # sitas turi buti assigninamas
     iteration = db.Column(db.String(64))
 

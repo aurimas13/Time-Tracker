@@ -10,13 +10,12 @@ def get_task_values(query):
             if actual_time['actual_time']:
                 tasks[key_id]['actual_times'].append(actual_time)
                 tasks[key_id]['actual_times_sum'] += actual_time['actual_time']
-                story_actual_time += actual_time['actual_time']
+                # story_actual_time += actual_time['actual_time']
         else:
             tasks[key_id] = task
             if actual_time['actual_time']:
                 tasks[key_id]['actual_times'] = [actual_time]
                 tasks[key_id]['actual_times_sum'] = actual_time['actual_time']
-                story_actual_time += actual_time['actual_time']
             else:
                 tasks[key_id]['actual_times'] = []
                 tasks[key_id]['actual_times_sum'] = 0
