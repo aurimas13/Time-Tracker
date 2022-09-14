@@ -7,14 +7,18 @@ sys.path.append(topdir)
 from app.models import Story, Task, Developer, TaskActualTimes
 
 
-
 def test_new_story():
     """
     GIVEN a Story model
     WHEN a new Story is created
     THEN check the name, status, description, estimated_time
     """
-    story = Story('John', True, 'I\'m awesome', 11)
+    story = Story(
+        story_name='John',
+        status=True,
+        description='I\'m awesome',
+        estimated_time=11
+    )
     assert story.story_name == 'John'
     assert story.status != False
     assert story.description == 'I\'m awesome'
@@ -27,7 +31,15 @@ def test_new_task():
     WHEN a new Task is created
     THEN check story id, name, status, description, estimated_time,. developer id, iteration
     """
-    task = Task(1, 'Emma', True, 'She\'s awesome', 15, 1, 'Story #1')
+    task = Task(
+        story_id = 1,
+        task_name = 'Emma',
+        status = True,
+        description = 'She\'s awesome',
+        estimated_time = 15,
+        developer_id = 1,
+        iteration = "Story #1"
+    )
     assert task.story_id == 1
     assert task.task_name == 'Emma'
     assert task.status != False
@@ -43,8 +55,10 @@ def test_new_actual_task_time():
     WHEN a new TaskActualTimes is created
     THEN check task id, actual_time
     """
-    task_actual = TaskActualTimes(1, 7)
-
+    task_actual = TaskActualTimes(
+        task_id = 1,
+        actual_time = 7
+    )
     assert task_actual.task_id == 1
     assert task_actual.actual_time == 7
 
@@ -55,7 +69,7 @@ def test_new_developer():
     WHEN a new Developer is created
     THEN check name
     """
-    developer = Developer('Rocky')
+    developer = Developer(name = 'Rocky')
 
     assert developer.name == 'Rocky'
 

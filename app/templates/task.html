@@ -10,14 +10,20 @@
     <div><p>To complete the task <b>{{ task.task_name }}</b> it is estimated to take <b>{{ task.estimated_time }} </b> hours</b>.</p></div>
     <div><p>Total time taken to complete the task is <b>{{task.actual_times_sum}}</b> hours</b>.</p></div>
     <div><p>The task has <b>{{ task.status }}</b> status for completion as iteration is given as <b>{{ task.iteration }}</b>.</p></div>
-<h3>Individual tasks of task <b>{{ task.task_name }}</b> for completion:</h3>
-{% for time in task.actual_times %}
-    <div><p>Time to complete a task is <b>{{time.actual_time}}</b> hours.</p></div>
-{% endfor %}
+<h3>Individual times spent of task <b>{{ task.task_name }}</b> for completion:</h3>
+<div>
+    <p>The total time taken to complete has been updated with these hour values: </p>
+    {% for time in task.actual_times %}
+        {{time.actual_time}}
+        {% if not loop.last %}
+            ,
+        {% endif %}
+    {% endfor %}
+</div>
+<div><p></p></div>
 <form action = "http://127.0.0.1:5000/story/{{ id }}/update_task/{{ task.task_id }}" method = "get">
     <input type="submit" value="Update Task" name="Update Task"/>
 </form>
-</p></div>
 {% endfor %}
 <h4>Want to add a new task? <h4/>
 <form action = "http://127.0.0.1:5000/story/{{ id }}/create_task" method = "get">

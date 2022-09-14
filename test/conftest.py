@@ -1,15 +1,25 @@
 import pytest
-import sys
-sys.path.insert(0, "/app")
-from app import app
+from dotenv import load_dotenv
+
+load_dotenv(".env.testing")
+
+import app
+
+print(app.env)
+
 
 @pytest.fixture()
 def app():
-    app = a
+    # app = create_app()
     app.config.update({
         "TESTING": True,
     })
+
+    # other setup can go here
+
     yield app
+
+    # clean up / reset resources here
 
 
 @pytest.fixture()

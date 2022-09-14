@@ -1,64 +1,21 @@
 from flask import render_template, flash, redirect, url_for, request
-from werkzeug.exceptions import BadRequestKeyError
 from app import app, db
 from app.models import Story, Task, Developer, TaskActualTimes
+from app.developer_service import add_developer
+from app.developer_summary import summarize_developers
+from app.story_service import get_story_values
+from app.task_service import get_task_values
 
 
 @app.route('/', methods=['POST','GET'])
 @app.route('/story', methods=['POST', 'GET'])
 def story():
-    # story = {'STORY_NAME': 'Stories'}
     if request.method == 'GET':
-        # query_result = db.session.query(Story, Task, TaskActualTimes).filter(
-        #     Task.story_id == Story.id).filter(
-        #     Task.task_id == TaskActualTimes.task_id).all()
         query_result = db.session.query(Story, Task, TaskActualTimes).join(
             Task, Story.id == Task.story_id, isouter=True).join(
             TaskActualTimes, Task.task_id == TaskActualTimes.task_id, isouter=True).all()
-        stories = {}
-        tasks = {}
-        story_actual_time = 0
-        for row in query_result:
-            story = row[0].__dict__
-            print(story)
-            task = row[1].__dict__
-            # print(task)
-            actual_time = row[2].__dict__
-            # print(actual_time)
-            # key_id = task['task_id']
-            # print(key_id)
-            story_id = story['id']
-            print(story_id)
-            if story_id in stories:
-                print('lala')
-                if actual_time['actual_time']:
-                    stories[story_id]['actual_times_sum'] += actual_time['actual_time']
-                    stories[story_id]['estimated_time'] = story['estimated_time']
-            else:
-                print('haha')
-                stories[story_id] = story
-                if actual_time['actual_time']:
-                    stories[story_id]['actual_times_sum'] = actual_time['actual_time']
-                    stories[story_id]['estimated_time'] = story['estimated_time']
-                else:
-                    stories[story_id]['actual_times_sum'] = 0
-                    stories[story_id]['estimated_time'] = 0
-
-        stories = stories.values()
-        print(stories)
-        # 1 : {'id' : 1, 'description' : '1', 'status' : False, 'story_name' : 1, 'estimated_time' : 1, 'actual_times_sum' :  }
-
-    return render_template('story.html', title='Stories', stories=stories, tasks=tasks)
-    #     # return render_template('task.html', title='Tracker', id=id, story=story, stories=stories, tasks=tasks, story_actual_time=story_actual_time)
-    # if request.method == 'GET':
-    #     stories = Story.query.all()
-    #     tasks = Task.query.all()
-    #     try:
-    #         story_actual_time = request.args['story_actual_time']
-    #     except BadRequestKeyError:
-    #         story_actual_time = None
-    #     return render_template('story.html', title='Tracker', tasks=tasks, stories=stories, story_actual_time=story_actual_time)
-
+        stories = get_story_values(query_result)
+    return render_template('story.html', title='Stories', stories=stories)
 
 
 @app.route('/story/<id>', methods=['POST', 'GET'])
@@ -68,32 +25,8 @@ def story_id(id):
         query_result = db.session.query(Task, TaskActualTimes).filter(
             Task.story_id == id).filter(
             Task.task_id == TaskActualTimes.task_id).all()
-        tasks = {}
-        story_actual_time = 0
-        for row in query_result:
-            task = row[0].__dict__
-            actual_time = row[1].__dict__
-            key_id = task['task_id']
-            story_id = task['story_id']
-            if key_id in tasks:
-                if actual_time['actual_time']:
-                    tasks[key_id]['actual_times'].append(actual_time)
-                    tasks[key_id]['actual_times_sum'] += actual_time['actual_time']
-                    story_actual_time += actual_time['actual_time']
-            else:
-                tasks[key_id] = task
-                if actual_time['actual_time']:
-                    tasks[key_id]['actual_times'] = [actual_time]
-                    tasks[key_id]['actual_times_sum'] = actual_time['actual_time']
-                    story_actual_time += actual_time['actual_time']
-                else:
-                    tasks[key_id]['actual_times'] = []
-                    tasks[key_id]['actual_times_sum'] = 0
-
-            # if story_id in tasks:
-            print(story_actual_time)
-        tasks = tasks.values()
-        return render_template('task.html', title='Tracker', id=id, story=story, tasks=tasks, story_actual_time=story_actual_time)
+        tasks = get_task_values(query_result)
+        return render_template('task.html', title='Tracker', id=id, story=story, tasks=tasks)
 
 
 @app.route('/create_story', methods=['POST', 'GET'])
@@ -131,10 +64,7 @@ def update_story(id):
 @app.route('/create_developer', methods=['POST', 'GET'])
 def create_developer():
     if request.method == 'POST':
-        developer = request.form
-        add_developer = Developer(name=developer['developer_name'])
-        db.session.add(add_developer)
-        db.session.commit()
+        add_developer(request.form)
         return redirect(url_for('story'))
 
     return render_template('create_developer.html', title='Tracker')
@@ -144,28 +74,9 @@ def developer_summary():
     if request.method == 'GET':
         query_result = db.session.query(Task, TaskActualTimes, Developer).filter(Task.developer_id == Developer.id).filter(
             Task.task_id == TaskActualTimes.task_id).all()
-        print(query_result)
-        developers = {}
-        for row in query_result:
-            task = row[0].__dict__
-            actual_time = row[1].__dict__
-            developer = row[2].__dict__
-            dev_id = developer['id']
-            if dev_id in developers:
-                if actual_time['actual_time']:
-                    developers[dev_id]['actual_times_sum'] += actual_time['actual_time']
-                    developers[dev_id]['estimated_time'] = task['estimated_time']
-            else:
-                developers[dev_id] = developer  # pvz, tasks[1] = {'task_id': 1}
-                if actual_time['actual_time']:
-                    developers[dev_id]['actual_times_sum'] = actual_time['actual_time']
-                    developers[dev_id]['estimated_time'] = task['estimated_time']
-                else:
-                    developers[dev_id]['actual_times_sum'] = 0
-                    developers[dev_id]['estimated_time'] = 0
-
-        developers = developers.values()
-        return render_template('developer.html', developers=developers)
+        # print(query_result)
+        developers_list = summarize_developers(query_result)
+        return render_template('developer.html', developers=developers_list)
 
 
 @app.route('/story/<id>/create_task', methods=['POST', 'GET'])
@@ -206,7 +117,7 @@ def update_task(story_id, task_id):
 
     elif request.method == 'POST':
         dev_id = request.form.get('comp_select')
-        print('This is the developer id ', dev_id)
+        # print('This is the developer id ', dev_id)
         item = Task.query.get(task_id)
         item.task_name = request.form['task_name']
         item.story_id = story_id
