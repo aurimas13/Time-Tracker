@@ -29,8 +29,6 @@ Please refer to Requirements for importing required libraries before looking at 
 
 - [Table of contents](#table-of-contents)
 - [Requirements](#requirements)
-- [Environment variables](#environment-variables)
-- [Authentication](#authentication)
 - [Usage](#usage)
 - [Functions](#functions)
 - [Datasets](#datasets)
@@ -43,20 +41,28 @@ Please refer to Requirements for importing required libraries before looking at 
 
 # Requirements
 
-**Python 3.10.6** is required to properly execute package's modules, imported libraries and defined functions.
-Also inspect [environment variables](#environment-variables) before proceeding further. For proper usage of the program you might need to run **python3** rather than proposed **python** as shown in the [Usage](#usage).<sup>1</sup>
 
-<br><sup>1</sup>**python** or **python3** depends on the way how you installed python on your machine. </br>
-# Environment variables
-To be able to send emails you will need to set up environment variables. To do this locally, please create a `.env` file and add two env variables to it with valid values, like this:<sup>1</sup>
+`IMPORTANT NOTE:` To run the services you might need to use the virtual environment:
 ```
-USR=<youremail>
-PSW=<yourpassword> or <token>
+virtualenv my_env
+source my_env/bin/activate
 ```
-<br><sup>1</sup> If you will send from gmail then to set up proper environment variable password you will need to create a token. Further info on this under [authentication](#authentication) section. </br>
-# Authentication
-To be able to send the email after setting Gmail email at environment variable you will need to create a token. Details on how to do it can be found [here](https://stackoverflow.com/questions/26736062/sending-email-fails-when-two-factor-authentication-is-on-for-gmail).
+
+**Python 3.10.6** is required to properly execute package's modules, imported libraries and defined functions. 
+To install the necessary libraries run [requirements.txt](https://github.com/aurimas13/Tracker/blob/main/requirements.txt) file as shown:
+`pip install -r requirements.txt`.
+
+For proper usage of the program you might need to run **python3** rather than proposed **python** as shown in the [Usage](#usage).<sup>1</sup>
+<br><sup>1</sup>**python** or **python3** depends on the way how you installed python of version 3.* on your machine. </br>
 # Usage
+How to run the flask app:
+
+```python 
+>>> conda create --name tracker 
+>>> conda activate tracker 
+>>> flask db upgrade 
+>>> flask run
+```
 After the requirements are met, the app package is set at your directory and terminal is run you have four options<sup>1,2,3</sup>:
 1) To allow yourself to run **validation** or **check & send** providing the Python file and data file as arguments. You will then be prompted choose either option 1 (validate) or 2 (validate and send): 
 ```
