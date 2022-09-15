@@ -16,7 +16,7 @@ flask run
 <p align="center" > <b> Birthday Reminder Application </b> </p>
 <br>
 <p align=center>
-  <a href="https://github.com/aurimas13/HackerRank-LeetCode/blob/main/LICENSE"><img alt="license" src="https://img.shields.io/npm/l/express"></a>
+  <a href="https://github.com/aurimas13/Tracker/blob/main/LICENSE"><img alt="license" src="https://img.shields.io/npm/l/express"></a>
   <a href="https://twitter.com/aurimasnausedas"><img alt="twitter" src="https://img.shields.io/twitter/follow/aurimasnausedas?style=social"/></a>
 </p>
 
