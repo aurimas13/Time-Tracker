@@ -41,7 +41,6 @@ class Developer(db.Model):
     """     Developer Schema    """
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(64), unique=True)
-    # Jei yra du jonai reikia sukurti emailus kurie yra unique ir leidzia atskirti developerius Jonus ar panasiai, tada email unique o developer name'ai nebe
 
     def __repr__(self):
         return '<Developer {} with developer id {}>'.format(self.name, self.id)

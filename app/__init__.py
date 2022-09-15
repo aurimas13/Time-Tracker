@@ -10,8 +10,8 @@ load_dotenv()
 env = os.environ.get('APP_ENV')
 app = Flask(__name__)
 app.config.from_object(config_by_name[env])
-db = SQLAlchemy(app) # initializing database
-migrate= Migrate(app, db)
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 
 from app import routes, models
