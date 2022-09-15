@@ -32,6 +32,7 @@ def add_data_fixtures():
 
 @pytest.fixture(scope="module", autouse=True)
 def test_client():
+    app.db.create_all()
     add_data_fixtures()
     testing_client = app.app.test_client()
     ctx = app.app.app_context()
