@@ -13,15 +13,15 @@ flask run
   <img height="222px" src="https://github.com/aurimas13/Tracker/blob/main/public/logo/time_tracker.jpeg"/>
 </p>
 
-<p align="center" > <b> Birthday Reminder Application </b> </p>
+<p align="center" > <b> Time Tracker </b> </p>
 <br>
 <p align=center>
   <a href="https://github.com/aurimas13/Tracker/blob/main/LICENSE"><img alt="license" src="https://img.shields.io/npm/l/express"></a>
   <a href="https://twitter.com/aurimasnausedas"><img alt="twitter" src="https://img.shields.io/twitter/follow/aurimasnausedas?style=social"/></a>
 </p>
 
-The program checks whether a person has a birthday in a week and optionally sends reminders to the rest of the group. It involves the necessary functionalities for validating the input and sending emails.
-This repository contains **2** **modules** where [bdayreminder.py](https://github.com/aurimas13/BirthdayReminderApp/blob/main/bdayreminder.py) involves these functionalities while [tests.py](https://github.com/aurimas13/BirthdayReminderApp/blob/main/Tests/tests.py) tests the package. Please refer to [Requirements](#requirements) for importing libraries, packages and addtional modules before looking at the [Usage](#usage) of the app or [Functions](#functions), [Tests](#tests), [Cron Job](#cron-job) and other fields.
+The app tracks the time of stories and tasks. Details of the usage are under [Usage](#usage).
+Please refer to Requirements for importing required libraries before looking at the [Usage](#usage).
 
 # Table of contents
 
@@ -43,7 +43,8 @@ This repository contains **2** **modules** where [bdayreminder.py](https://githu
 
 # Requirements
 
-**Python 3.9.12** is required to properly execute package's modules, imported libraries and defined functions. Imports of several libraries like dotnet, pytest to name a few are also needed. Some required versions are found [here](https://github.com/aurimas13/BirthdayReminderApp/blob/main/requirements.txt) while those that are not mentioned come with the used Python version. Also inspect [environment variables](#environment-variables) and [authentication](#authentication) before proceeding further. For proper usage of the program you might need to run **python3** rather than proposed **python** as shown in the [Usage](#usage).<sup>1</sup>
+**Python 3.10.6** is required to properly execute package's modules, imported libraries and defined functions.
+Also inspect [environment variables](#environment-variables) before proceeding further. For proper usage of the program you might need to run **python3** rather than proposed **python** as shown in the [Usage](#usage).<sup>1</sup>
 
 <br><sup>1</sup>**python** or **python3** depends on the way how you installed python on your machine. </br>
 # Environment variables
