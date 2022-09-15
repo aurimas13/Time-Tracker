@@ -40,6 +40,7 @@ nosetests.xml
 
 venv
 app.db
+test.db
 tracker.log*
 
 
