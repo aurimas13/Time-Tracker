@@ -47,3 +47,5 @@ tracker.log*
 # Other
 .idea
 /migrations
+.DS_Store
+public/logo/.DS_Store
