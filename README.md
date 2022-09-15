@@ -63,7 +63,7 @@ Navigating to **http://127.0.0.1:5000/** or **http://127.0.0.1:5000/story** will
 or add a developer (`Add Developer`).
 
 When you add a developer or two of them a dropdown will appear when creating or
-updating a task (`Add task` or`Update task`) up that will allow to choose developers to be assigned to the task of the story:
+updating a task (`Add task` or`Update task`) that will allow to choose developers to be assigned to the task of the story:
 
 - After you press `See Story` you will be redirected to create tasks for it. If you wish to update a story press `Update Story` below if a story has been created.
 - When you press `See Story` you will be given an option to `Add task` or if one exists already `Update Task`.
