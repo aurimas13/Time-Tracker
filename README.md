@@ -52,6 +52,7 @@ After the requirements are met, the app package is set at your directory and ter
 ```
 >>> conda create --name tracker 
 >>> conda activate tracker 
+>>> pip install -r requirements.txt
 >>> flask db upgrade 
 >>> flask run
 ```
