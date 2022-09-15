@@ -69,7 +69,7 @@ updating a task (`Add task` or`Update task`) that will allow to choose developer
 - When you press `See Story` you will be given an option to `Add task` or if one exists already `Update Task`.
 - `Developer summary` gives a summary of all developers assigned to do the tasks of stories. 
 It estimates points for how long it is estimated to complete the tasks of stories while the actual time taken to 
-complete the tasks are calculated for each developer and summarised there at `Developer summary`.
+complete the tasks are calculated for each developer and summarised at `Developer summary`.
 
 
 
