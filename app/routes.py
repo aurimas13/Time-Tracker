@@ -139,7 +139,6 @@ def create_task(id):
         task = request.form
         print('lala', id)
         print(task)
-        # dev_id = request.form.get('comp_select')
         add_task = Task(
             task_name=task['task_name'],
             story_id=id,
