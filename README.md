@@ -51,14 +51,6 @@ After the requirements are met, the app package is set at your directory and ter
 
 # Tests
 
-An overview of functions found inside a module - [tests.py](https://github.com/aurimas13/BirthdayReminderApp/blob/main/Tests/tests.py):
-- *test_correct_parse_date_ymd()* tests if the correct date is parsed.
-- *test_correct_parse_date_md()* tests if the correct date is parsed.
-- *test_is_date_in_past_old()* tests if the old date is in the past.
-- *test_is_date_in_past_future()* tests if the future date is in the past.
-- *test_is_date_in_past_past_month_day()* tests if the old date is in the past.
-- *test_is_valid_email_good()* tests if the email address is valid.
-- *test_is_valid_email_bad()* tests if the email address is invalid.
 
 By navigating to the program/app folder where it is extracted - [BirthdayReminderApp](https://github.com/aurimas13/BirthdayReminderApp#birthday-reminder-app) - one folder before where [tests.py](https://github.com/aurimas13/BirthdayReminderApp/blob/main/Tests/tests.py) is held and one can run these test commands:
 
@@ -72,14 +64,16 @@ By navigating to the program/app folder where it is extracted - [BirthdayReminde
 
 [//]: # ()
 [//]: # ([comment]: <> &#40;```&#41;)
-1) To check source files for errors in the project folder:
+1) To run unit tests in the project folder run:
 ```
->>> pyflakes .
+>>> python -m pytest test/unit/test.py
+
 ```
 
-2) To check source files for errors in test file: 
+2) To run functional tests in the project folder run:
 ```
->>> pyflakes Tests/tests.py
+>>> python -m pytest test/functional/test.py
+
 ```
 
 3) To check typing for test file:
