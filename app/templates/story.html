@@ -3,7 +3,7 @@
 {% block content %}
 <h1>{{ title }}</h1>
 {% for story in stories %}
-<div><p>The estimated points for the user story <b>{{ story.story_name }}</b> is <b>{{ stories.estimated_points }}</b> points</b>.</p></div>
+<div><p>The estimated points for the user story <b>{{ story.story_name }}</b> is <b>{{ story.estimated_points }}</b> points</b>.</p></div>
 <div><p>Total time to complete the story <b>{{story.story_name}}</b> takes <b>{{story.actual_times_sum}}</b> hours.</p></div>
 <div><p>Description of the story <b>{{ story.story_name }}</b>: <b>{{ story.description }}</b></p></div>
 <div><p>The status of story <b>{{ story.story_name }}</b> is <b>{{ story.status }}</b> for completion.</p></div>

@@ -10,7 +10,7 @@ flask db upgrade
 flask run
 
 <p align=center>
-  <img height="222px" src="https://github.com/aurimas13/BirthdayReminderApp/blob/main/Public/Logo/birthdaylogo.png"/>
+  <img height="222px" src="https://github.com/aurimas13/Tracker/blob/main/public/logo/time_tracker.jpeg"/>
 </p>
 
 <p align="center" > <b> Birthday Reminder Application </b> </p>
