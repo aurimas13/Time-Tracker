@@ -52,6 +52,9 @@ After the requirements are met, the app package is set at your directory and ter
 >>> flask run
 ```
 
+To look at the functionalities of the app refer to [Navigation](#navigation).
+
+
 # Navigation
 
 When you run `flask run` you will have a localhost name on terminal like ` Running on http://127.0.0.1:5000`. 
