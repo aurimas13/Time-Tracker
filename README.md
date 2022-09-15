@@ -52,18 +52,8 @@ After the requirements are met, the app package is set at your directory and ter
 # Tests
 
 
-By navigating to the program/app folder where it is extracted - [BirthdayReminderApp](https://github.com/aurimas13/BirthdayReminderApp#birthday-reminder-app) - one folder before where [tests.py](https://github.com/aurimas13/BirthdayReminderApp/blob/main/Tests/tests.py) is held and one can run these test commands:
+By navigating to the program/app folder where it is extracted - [Tracker](https://github.com/aurimas13/Tracker) - one folder before where test folder is held one can run these test commands:
 
-[//]: # ([comment]: <> &#40;For DocTest run this command in terminal:&#41;)
-
-[//]: # ()
-[//]: # ([comment]: <> &#40;``` python&#41;)
-
-[//]: # ()
-[//]: # ([comment]: <> &#40;> python -m doctest -v calculator.py&#41;)
-
-[//]: # ()
-[//]: # ([comment]: <> &#40;```&#41;)
 1) To run unit tests in the project folder run:
 ```
 >>> python -m pytest test/unit/test.py
@@ -74,11 +64,6 @@ By navigating to the program/app folder where it is extracted - [BirthdayReminde
 ```
 >>> python -m pytest test/functional/test.py
 
-```
-
-3) To check typing for test file:
-``` 
->>> python -m pytest Tests/tests.py
 ```
 
 # Public
