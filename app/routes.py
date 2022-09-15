@@ -5,6 +5,7 @@ from app.developer_service import add_developer
 from app.developer_summary import summarize_developers
 from app.story_service import get_story_values
 from app.task_service import get_task_values
+from app.get_models import get_task_taskactualtimes_by_ids
 
 
 @app.route('/', methods=['POST','GET'])
@@ -25,18 +26,20 @@ def story_id(id):
         query_result = db.session.query(Task, TaskActualTimes).filter(
             Task.story_id == id).filter(
             Task.task_id == TaskActualTimes.task_id).all()
+        # print(query_result)
         query_result_2 = db.session.query(Story, Task, TaskActualTimes).join(
             Task, Story.id == Task.story_id, isouter=True).join(
             TaskActualTimes, Task.task_id == TaskActualTimes.task_id, isouter=True).all()
         tasks = get_task_values(query_result)
         stories = get_story_values(query_result_2)
-        return render_template('task.html', title='Tracker', id=id, story=story, tasks=tasks)
+        return render_template('task.html', title='Tracker', id=id, story=story, tasks=tasks, stories=stories)
 
 
 @app.route('/create_story', methods=['POST', 'GET'])
 def create_story():
     if request.method == 'POST':
         story = request.form
+        # print('haha', story)
         add_story = Story(story_name=story['story_name'],
                           status='check' in story,
                           description=story['story_description'],
@@ -51,9 +54,8 @@ def create_story():
 @app.route('/story/<id>/update_story', methods=['POST', 'GET'])
 def update_story(id):
     if request.method == 'GET':
-        stories = Story.query.filter_by(id=id)
         story = Story.query.get(id)
-        return render_template('update_story.html', title='Tracker', story=story, stories=stories)
+        return render_template('update_story.html', title='Tracker', story=story)
 
     elif request.method == 'POST':
         item = Story.query.get(id)
@@ -69,6 +71,7 @@ def update_story(id):
 def create_developer():
     if request.method == 'POST':
         add_developer(request.form)
+        # print(request.form)
         return redirect(url_for('story'))
 
     return render_template('create_developer.html', title='Tracker')

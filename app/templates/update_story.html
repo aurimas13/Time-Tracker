@@ -3,9 +3,9 @@
 {% block content %}
         <h1>Update Story</h1>
         <form method="POST">
-            <div><p>{{ story.story_name }}: <b>{{ story.description }}</b></p></div>
-            <div><p>Story ID: <b>{{ story.id }}</b></p></div>
-            <div><p>The current story estimate points is <b>{{ story.estimated_points }}</b> and it is <b>{{ story.status }}</b> for activity</p></div>
+<!--            <div><p>{{ story.story_name }}: <b>{{ story.description }}</b></p></div>-->
+<!--            <div><p>Story ID: <b>{{ story.id }}</b></p></div>-->
+            <div><p>The current story estimate points is <b>{{ story.estimated_points }}</b> and it is <b>{{ story.status }}</b> for activity.</p></div>
             <p>
                 <label for="name">Story Name:</label>
                 <input id="name" name="story_name" type="text" value="{{ story.story_name }}">

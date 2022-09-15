@@ -25,7 +25,7 @@ class Task(db.Model):
     iteration = db.Column(db.String(64))
 
     def __repr__(self):
-        return '<Task {} of story id {} with task id {}>'.format(self.task_id, self.story_id, self.task_id)
+        return '<Task {} of story id {} with task id {}>'.format(self.task_name, self.story_id, self.task_id)
 
 
 class TaskActualTimes(db.Model):
