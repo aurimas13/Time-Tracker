@@ -38,9 +38,10 @@ To install the necessary libraries run [requirements.txt](https://github.com/aur
 `pip install -r requirements.txt`.
 
 For proper usage of the program you might need to run **python3** rather than proposed **python** as shown in the [Usage](#usage).<sup>1</sup>
-
 <br><sup>1</sup>**python** or **python3** depends on the way how you installed python of version 3.* on your machine. </br>
+
 # Usage
+
 After the requirements are met, the app package is set at your directory and terminal is run you have to run the flask app:
 ```
 >>> conda create --name tracker 
@@ -50,7 +51,6 @@ After the requirements are met, the app package is set at your directory and ter
 ```
 
 # Tests
-
 
 By navigating to the program/app folder where it is extracted - [Tracker](https://github.com/aurimas13/Tracker) - one folder before where test folder is held one can run these test commands:
 
