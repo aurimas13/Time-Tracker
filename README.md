@@ -94,6 +94,8 @@ By navigating to the program/app folder where it is extracted - [Tracker](https:
 
 ```
 
+3) Or run it with `pytest test/functional/test.py` or `pytest test/unit/test.py`
+
 # Public
 
 Public folder contains [todolist text file](https://github.com/aurimas13/Tracker/blob/main/public/todolist.txt) and a Logo folder.
