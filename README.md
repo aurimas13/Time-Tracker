@@ -28,11 +28,15 @@ Please refer to [Requirements](#requirements) for importing required libraries b
 # Requirements
 
 
-`IMPORTANT NOTE:` To run the services you might need to use the virtual environment:
-```
-virtualenv my_env
-source my_env/bin/activate
-```
+[//]: # (`IMPORTANT NOTE:` To run the services you might need to use the virtual environment:)
+
+[//]: # (```)
+
+[//]: # (virtualenv my_env)
+
+[//]: # (source my_env/bin/activate)
+
+[//]: # (```)
 
 **Python 3.10.6** is required to properly execute package's modules, imported libraries and defined functions. 
 To install the necessary libraries run [requirements.txt](https://github.com/aurimas13/Tracker/blob/main/requirements.txt) file as shown: `pip install -r requirements.txt`.
