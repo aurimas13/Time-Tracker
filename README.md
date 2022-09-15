@@ -34,12 +34,12 @@ source my_env/bin/activate
 ```
 
 **Python 3.10.6** is required to properly execute package's modules, imported libraries and defined functions. 
-To install the necessary libraries run [requirements.txt](https://github.com/aurimas13/Tracker/blob/main/requirements.txt) file as shown:
-`pip install -r requirements.txt`.
+To install the necessary libraries run [requirements.txt](https://github.com/aurimas13/Tracker/blob/main/requirements.txt) file as shown: `pip install -r requirements.txt`.
 
 For proper usage of the program you might need to run **python3** rather than proposed **python** as shown in the [Usage](#usage).<sup>1</sup>
-<br><sup>1</sup>**python** or **python3** depends on the way how you installed python of version 3.* on your machine. </br>
 
+
+<br><sup>1</sup>**python** or **python3** depends on the way how you installed python of version 3.* on your machine. </br>
 # Usage
 
 After the requirements are met, the app package is set at your directory and terminal is run you have to run the flask app:
