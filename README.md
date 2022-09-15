@@ -1,14 +1,3 @@
-# Welcome to Time Tracker Application!
-
-This is a Time Tracker Application done from looking into [Flask Mega-Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world). See the tutorial for instructions on how to work with it.
-
-How to run it:
-
-conda create --name tracker
-conda activate tracker
-flask db upgrade
-flask run
-
 <p align=center>
   <img height="400px" src="https://github.com/aurimas13/Tracker/blob/main/public/logo/time_tracker.png"/>
 </p>
@@ -53,96 +42,16 @@ To install the necessary libraries run [requirements.txt](https://github.com/aur
 `pip install -r requirements.txt`.
 
 For proper usage of the program you might need to run **python3** rather than proposed **python** as shown in the [Usage](#usage).<sup>1</sup>
+
 <br><sup>1</sup>**python** or **python3** depends on the way how you installed python of version 3.* on your machine. </br>
 # Usage
-How to run the flask app:
-
-```python 
+After the requirements are met, the app package is set at your directory and terminal is run you have to run the flask app:
+```
 >>> conda create --name tracker 
 >>> conda activate tracker 
 >>> flask db upgrade 
 >>> flask run
 ```
-After the requirements are met, the app package is set at your directory and terminal is run you have four options<sup>1,2,3</sup>:
-1) To allow yourself to run **validation** or **check & send** providing the Python file and data file as arguments. You will then be prompted choose either option 1 (validate) or 2 (validate and send): 
-```
->>> python bdayreminder.py <data_file_path>
-Choose 1 to validate if input data file is correct or 2 to check for upcoming birthdays and send respective emails
->>> 1
-ERROR: Invalid email for Laura Dreyfuss at row 6 
-ERROR: Empty name field is for email TheoGermaine@goal.com at row 7 
-ERROR: Invalid date for Anna Higgins at row 11. Date given is 02-30 
-ERROR: Date is in the future for Tom Brady at row 12. Date given is 2075-10-22 
-ERROR: Invalid email for Ching Yeung Michael Tam at row 19
-'''
-'''
->>> python bdayreminder.py <data_file_path>
-Choose 1 to validate if input data file is correct or 2 to check for upcoming birthdays and send respective emails
->>> 2
-Kai Yuen Leung will have birthday in a week.
-Patrick Kienzle will have birthday in a week.
-Emails sent successfully.
-```
-2) To run **validation** or **check & send** providing the Python file, data file and any number other than 1 or 2 as arguments. You will then be prompted choose either option 1 (validate) or 2 (validate and send), as no other numbers are options: 
-
-```
->>> python bdayreminder.py <data_file_path> 3
-Choose 1 to validate if input data file is correct or 2 to check for upcoming birthdays and send respective emails
->>> 3
-Please choose either 1 or 2
->>> 1
-ERROR: Invalid email for Laura Dreyfuss at row 6 
-ERROR: Empty name field is for email TheoGermaine@goal.com at row 7 
-ERROR: Invalid date for Anna Higgins at row 11. Date given is 02-30 
-ERROR: Date is in the future for Tom Brady at row 12. Date given is 2075-10-22 
-ERROR: Invalid email for Ching Yeung Michael Tam at row 19 
-```
-
-3) You can avoid having the prompt displayed to you altogether. To **validate** birthday persons **data file** for errors set the second argument to be **1**:
-
-```
->>> python bdayreminder.py <data_file_path> 1
-ERROR: Invalid email for Laura Dreyfuss at row 6 
-ERROR: Empty name field is for email TheoGermaine@goal.com at row 7 
-ERROR: Invalid date for Anna Higgins at row 11. Date given is 02-30 
-ERROR: Date is in the future for Tom Brady at row 12. Date given is 2075-10-22 
-ERROR: Invalid email for Ching Yeung Michael Tam at row 19
-``` 
-4) To **check** birthday persons **data file** and **send emails** set the second argument to be **2**:
-
-```
->>> python bdayreminder.py <data_file_path> 2
-Kai Yuen Leung will have birthday in a week.
-Patrick Kienzle will have birthday in a week.
-Emails sent successfully.
-```
-<br><sup>1</sup> **<data_file_path>** should look like this - Datasets/data_20.csv, but in your directory. The full path for me would be /Users/aurimasnausedas/Documents/Python/BirthdayReminderApp/Datasets/data_20.csv </br>
-<br><sup>2</sup> Main module takes two arguments when run from console. </br>
-<br><sup>3</sup> The data used for examples was data_20.csv on 23<sup>th</sup> of June 2022.</br>
-
-# Functions
-
-An overview of functions found inside a module - ***bdayreminder.py***:
-
-- **validate_data_and_send_emails(input_file, send_emails)** checks the validity of an *input_file* and whether a birthday is in a week as well as optionally sends the respective emails (*send_emails*).
-- **parse_date(date)** parses the *date*.
-- **is_valid_input(date_format, item, index, to_print)** validates inputs (*date_format*,*item*,*index*,*to_print*).
-- **send_multiple_emails(birthday_individuals, to_send)** sends emails to recipients of *to_send* list.
-- **is_date_in_past(date, date_format)** looks if *date* is in the past.
-- **is_valid_email(email)** checks if an email is valid.
-- **send_email(name, bday_name, bday_date, days_left, to_email)** sends an email to a recipient (*name*,*to_email*) as a reminder of a birthday (*bday_name*,*bday_date*) in advance (*days_left*).
-- **run(read_path, cron_value)** takes the csv data file and runs the script without as choices are passed as arguments (*read_path*,*cron_value*).
-- **choose_options(read_path)** asks for input (*read_path*) and chooses option to run.
-
-[//]: # (- **convert_birthday_file&#40;file_path&#41;** converts a data file &#40;*file_path*&#41; to the csv format that can be read.)
-[//]: # (- **is_birthdate_in_7_days&#40;&#41;** finds the date for the upcoming birthdays in a week.)
-[//]: # (- **is_not_empty_name&#40;name&#41;** checks *name* is not empty.)
-
-In depth explanations of the functions can be found inside a module - [bdayreminder.py](https://github.com/aurimas13/BirthdayReminderApp/blob/main/bdayreminder.py).
-
-# Datasets
-
-There are three possible datasets to use. These are [data_20](https://github.com/aurimas13/BirthdayReminderApp/blob/main/Datasets/data_20.csv) of 20 recipients, [data_50](https://github.com/aurimas13/BirthdayReminderApp/blob/main/Datasets/data_50.csv) of 50 recipients and [data_80](https://github.com/aurimas13/BirthdayReminderApp/blob/main/Datasets/data_80.csv) of 80 recipients.
 
 # Tests
 
