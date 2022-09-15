@@ -19,11 +19,7 @@ Please refer to Requirements for importing required libraries before looking at 
 - [Table of contents](#table-of-contents)
 - [Requirements](#requirements)
 - [Usage](#usage)
-- [Functions](#functions)
-- [Datasets](#datasets)
 - [Tests](#tests)
-- [Error](#errors)
-- [Cron Job](#cron-job)
 - [Public](#public)
 - [Logo](#photo)
 - [License](#license)
@@ -90,67 +86,16 @@ By navigating to the program/app folder where it is extracted - [BirthdayReminde
 ``` 
 >>> python -m pytest Tests/tests.py
 ```
-# Errors
-
-There could arise a few errors like:
-
-1) 1st argument error if the provided 1st argument is of different format to the csv format:
-```
->>> python bdayreminder.py Datasets/data_20.json 1      
-Traceback (most recent call last):
-  File "/Users/aurimasnausedas/Documents/Python/BirthdayReminderApp/bdayreminder.py", line 237, in <module>
-    run(arg_path, cron_input)
-  File "/Users/aurimasnausedas/Documents/Python/BirthdayReminderApp/bdayreminder.py", line 215, in run
-    raise Exception('ERROR: Wrong data format file')
-Exception: ERROR: Wrong data format file
-```
-2) 1st argument error if the provided 1st argument of data file doesn't exist:
-```
->>> python bdayreminder.py Datasets/data_13.csv 1 
-Traceback (most recent call last):
-  File "/Users/aurimasnausedas/Documents/Python/BirthdayReminderApp/bdayreminder.py", line 237, in <module>
-    run(arg_path, cron_input)
-  File "/Users/aurimasnausedas/Documents/Python/BirthdayReminderApp/bdayreminder.py", line 199, in run
-    raise Exception('ERROR: File doesn\'t exist')
-Exception: ERROR: File doesn't exist
-```
-3) 2nd argument error if the provided 2nd argument is a string:
-```
->>>  python bdayreminder.py Datasets/data_20.csv versada
-Argument passed not an integer
-```
-
-There are more yet these would be the most common.
-
-# Cron Job
-
-To build cron job in mac terminal run:
-``` 
->>> crontab -e
-```
-
-The syntax for cronjob when entering terminal could look like this:<sup>1,2,3</sup>
-``` 
->>> 0 6 * * * cd <directory_to_app> && <directory_to_python> bdayreminder.py <data_file_path> 2
-[Optional] >>> 0 6 * * * cd <directory_to_app> && <directory_to_python> bdayreminder.py <data_file_path> 2 >> Public/birthdays.txt
-```
-<br><sup>1</sup> **<directory_to_app>** - should be the directory where BirthdayReminderApp folder is like /Users/aurimasnausedas/Documents/Python/BirthdayReminderApp </br>
-<br><sup>2</sup> **<directory_to_python>** should be where you installed python on your machine like /Users/aurimasnausedas/opt/miniconda3/envs/symmetric/bin/python </br>
-<br><sup>3</sup> **<data_file_path>** should be the dataset in the directory of app like in /Users/aurimasnausedas/Documents/Python/BirthdayReminderApp by setting it to Datasets/data_20.csv </br>
-
-Syntax customization for Cron Job can be checked [here](https://crontab.guru/).
 
 # Public
 
-Public folder contains three files: 
-- [birthdays.txt](https://github.com/aurimas13/BirthdayReminderApp/blob/main/Public/birthdays.txt) - the output of a Cron Job after implementing the [Optional] command as given at [Cron Job](#cron-job) field.
-- [todolist](https://github.com/aurimas13/BirthdayReminderApp/blob/main/Public/todolist) - the TO DO List.
+Public folder contains [todolist text file](https://github.com/aurimas13/Tracker/blob/main/public/todolist.txt) and a Logo folder.
 
 [//]: # (- [task.pdf]&#40;https://github.com/aurimas13/BirthdayReminderApp/blob/main/Public/task.pdf&#41; - the problem for which this program was implemented.)
 
 # Logo
 
-The logo of the Birthday Reminder Application can be found [here](https://github.com/aurimas13/BirthdayReminderApp/blob/main/Public/Photo/birthdaylogo.png).
+The logo of the Birthday Reminder Application can be found [here](https://github.com/aurimas13/Tracker/blob/main/public/logo/time_tracker.png).
 
 # License
 
