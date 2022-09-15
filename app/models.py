@@ -21,7 +21,7 @@ class Task(db.Model):
     status = db.Column(db.Boolean, default=False)
     description = db.Column(db.String(140))
     estimated_points = db.Column(db.Integer)
-    developer_id = db.Column(db.Integer, db.ForeignKey('developer.id')) # sitas turi buti assigninamas
+    developer_id = db.Column(db.Integer, db.ForeignKey('developer.id'))
     iteration = db.Column(db.String(64))
 
     def __repr__(self):

@@ -4,8 +4,12 @@ from app import db
 
 def save_changes(data=False) -> bool:
     """
-    Persists data to the database.
-    Don't use `data` if you .delete()
+    This is the method that persists data to the database.
+
+    args:
+        data (boolean)
+    return:
+        boolean
     """
     try:
         if data is not False:

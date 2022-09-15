@@ -4,6 +4,6 @@
 <h1>Developer Summary</h1>
     {% for developer in developers %}
     <div><p>For developer <b>{{ developer.name }}</b> to complete the assigned tasks of stories it is estimated to take <b>{{ developer.estimated_points }}</b> points.</p></div>
-    <div><p>As for real, the total actual taken time to complete the tasks of the stories has been <b>{{developer.actual_times_sum}}</b> hours.</p></div>
+    <div><p>The total taken time to complete the tasks of the stories for <b>{{ developer.name }}</b> has been <b>{{developer.actual_times_sum}}</b> hours.</p></div>
     {% endfor %}
 {% endblock %}

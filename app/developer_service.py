@@ -3,6 +3,14 @@ from app.database_utils import save_changes
 
 
 def add_developer(form):
+    """
+    This a method that creates a new developer and saves it to a database.
+
+    args:
+        form (str)
+    return:
+        resylt (boolean) saves to the database
+    """
     developer = Developer(name=form['developer_name'])
     result = save_changes(developer)
     return result

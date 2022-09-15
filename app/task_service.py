@@ -1,11 +1,22 @@
 def get_task_values(query):
+    """
+    This is the method for transforming values from SQL database to HTML-readable values.
+
+    A query of two modules is provided. The function extracts the information
+    into task and actual_time dictionaries while returning an updated list - tasks.
+    It loops through all these dictionaries.
+    First if loops remove irrelevant key/value pairs while other if loops update
+    actual_time and actual_times_sum values.
+
+    args:
+        query (list of tuples of Task, TaskActualTimes)
+    return:
+        tasks(list)
+    """
     tasks = {}
-    story_actual_time = 0
     for row in query:
         task = row[0].__dict__
-        print(row[0].__dict__)
         actual_time = row[1].__dict__
-        # print(row[1].__dict__)
         key_id = task['task_id']
 
         if '_sa_instance_state' in task:
@@ -26,5 +37,4 @@ def get_task_values(query):
                 tasks[key_id]['actual_times'] = []
                 tasks[key_id]['actual_times_sum'] = 0
     tasks = list(tasks.values())
-    print(tasks)
     return tasks

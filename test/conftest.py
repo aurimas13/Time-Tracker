@@ -4,17 +4,28 @@ from dotenv import load_dotenv
 load_dotenv(".env.testing")
 
 import app
-from app.models import Story
+from app.models import Story, Developer, Task
 
 
 def add_data_fixtures():
+    fixture_developer = Developer(name='Alex')
     fixture_story = Story(
         estimated_points=10,
         story_name='0',
         status=True,
         description='0'
     )
-
+    fixture_task = Task(
+        estimated_points=8,
+        task_name='Task Two',
+        status=True,
+        description='Cool Two',
+        iteration='Story One',
+        story_id=1,
+        developer_id=1
+    )
+    app.db.session.add(fixture_task)
+    app.db.session.add(fixture_developer)
     app.db.session.add(fixture_story)
     app.db.session.commit()
 
