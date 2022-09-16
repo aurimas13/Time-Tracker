@@ -38,3 +38,4 @@ def get_task_values(query):
                 tasks[key_id]['actual_times_sum'] = 0
     tasks = list(tasks.values())
     return tasks
+

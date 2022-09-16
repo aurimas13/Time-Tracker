@@ -40,3 +40,4 @@ def summarize_developers(query):
 
     developers = list(developers.values())
     return developers
+
