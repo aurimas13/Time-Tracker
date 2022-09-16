@@ -10,3 +10,4 @@ DONE 9) unit tests
 DONE 10) functional tests
 DONE 11) Make total time shown at /story endpoint
 DONE 12) Program sumarrizes all developer times
+13) Fix variable names to represent what it does like comp_select should be developer ids. Do in the weekend.

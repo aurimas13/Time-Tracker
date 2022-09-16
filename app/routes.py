@@ -7,7 +7,7 @@ from app.story_service import get_story_values
 from app.task_service import get_task_values
 
 
-@app.route('/', methods=['POST','GET'])
+@app.route('/', methods=['POST', 'GET'])
 @app.route('/story', methods=['POST', 'GET'])
 def story():
     """
@@ -186,11 +186,9 @@ def update_task(story_id, task_id):
     if request.method == 'GET':
         task = Task.query.get(task_id)
         developers = Developer.query.all()
-        print(type(story_id), type(task_id))
         return render_template('update_task.html', title='Tracker', task=task, developers=developers)
 
     elif request.method == 'POST':
-        # dev_id = request.form.get('comp_select')
         item = Task.query.get(task_id)
         item.task_name = request.form['task_name']
         item.story_id = story_id

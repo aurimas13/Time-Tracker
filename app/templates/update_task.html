@@ -3,12 +3,11 @@
 {% block content %}
     <h1>Update Task</h1>
     <form method="POST">
-        <div><p>{{ task.task_name }}: <b>{{ task.description }}</b></p></div>
-        <div><p>Task ID: <b>{{ task.task_id }}</b></p></div>
-        <div><p>The current task estimate points is <b>{{ task.estimated_points }}</b> and it is <b>{{ task.status }}</b> for activity that has <b>{{ task.iteration }}</b> for iteration</p></div>
-        {% for time in times %}
-        <div><p>Total time taken to complete the task - {{time.actual_time}}</p></div>
-        {% endfor %}
+        <div><p>Description of the Task - {{ task.task_name }}: <b>{{ task.description }}</b>.</p></div>
+        <div><p>The current task estimate points is <b>{{ task.estimated_points }}</b> and it is <b>{{ task.status }}</b> for activity that has <b>{{ task.iteration }}</b> for iteration.</p></div>
+<!--        {% for time in times %}-->
+<!--        <div><p>Total time taken to complete the task is {{time.actual_time}} hours.</p></div>-->
+<!--        {% endfor %}-->
         <p>
             <label for="name">Task Name:</label>
             <input id="name" name="task_name" type="text" value="{{ task.task_name }}">

@@ -1,5 +1,5 @@
 def summarize_developers(query):
-    '''
+    """
     This is the method for transforming values from SQL database to HTML-readable values.
 
     A query of three modules is provided. The function extracts the information into
@@ -12,7 +12,7 @@ def summarize_developers(query):
         query (list of tuples of Task, TaskActualTimes, Developer)
     return:
         developers(list)
-    '''
+    """
     developers = {}
     for row in query:
         task = row[0].__dict__

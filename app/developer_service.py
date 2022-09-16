@@ -9,10 +9,8 @@ def add_developer(form):
     args:
         form (str)
     return:
-        resylt (boolean) saves to the database
+        resUlt (boolean) saves to the database
     """
     developer = Developer(name=form['developer_name'])
     result = save_changes(developer)
     return result
-
-

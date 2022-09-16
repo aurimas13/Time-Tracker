@@ -4,7 +4,7 @@ def get_story_values(query):
 
     A query of three modules is provided. The function extracts the information into
     story, task and actual_time dictionaries while returning an updated list - stories.
-    For loop loops through all these dictionaries.
+    It loops through all these dictionaries.
     First if loops removes irrelevant key/value pairs while second if loop checks for the existence of value
     and the other loops check and update actual_time and actual_times_sum values.
 
