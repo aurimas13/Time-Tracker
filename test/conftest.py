@@ -45,13 +45,3 @@ def test_client():
         app.db.drop_all()
 
     ctx.pop()
-
-
-# @pytest.fixture()
-# def client(test_client):
-#     return test_client.test_client()
-#
-#
-# @pytest.fixture()
-# def runner(test_client):
-#     return test_client.test_cli_runner()

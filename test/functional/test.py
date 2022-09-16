@@ -1,7 +1,3 @@
-from app.models import Story, Task, TaskActualTimes, Developer
-import app
-
-
 def test_create_developer_post(test_client):
     value = {'developer_name': 'Adam'}
     response = test_client.post("/create_developer", data=value, follow_redirects=True)
