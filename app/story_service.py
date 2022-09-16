@@ -46,4 +46,3 @@ def get_story_values(query):
             stories[story_id]['actual_times_sum'] = 'Unknown'
     stories = list(stories.values())
     return stories
-

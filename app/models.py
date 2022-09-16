@@ -44,4 +44,3 @@ class Developer(db.Model):
 
     def __repr__(self):
         return '<Developer {} with developer id {}>'.format(self.name, self.id)
-

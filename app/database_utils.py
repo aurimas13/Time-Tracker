@@ -19,4 +19,3 @@ def save_changes(data=False) -> bool:
     except Exception as e:
         logging.error(e)
         return False
-

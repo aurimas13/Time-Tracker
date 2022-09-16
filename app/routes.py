@@ -247,4 +247,3 @@ def developer_summary():
             Task.task_id == TaskActualTimes.task_id).all()
         developers_list = summarize_developers(query_result)
         return render_template('developer.html', developers=developers_list)
-
