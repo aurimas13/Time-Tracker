@@ -30,7 +30,7 @@ def summarize_developers(query):
             del developer['_sa_instance_state']
 
         if dev_id in developers:
-            developers[dev_id]['estimated_points'] += task['estimated_points']
+            developers[dev_id]['estimated_points'] = task['estimated_points']
             developers[dev_id]['actual_times_sum'] += actual_time['actual_time']
 
         else:
