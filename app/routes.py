@@ -122,7 +122,7 @@ def update_story(id):
 def delete_story(id):
     """
         This is the method for deleting a story.
-        It deletes all associated values of Story, Task & TaskActualTimes models from a database.
+        It deletes all associated values of Story, Task & TaskActualTimes models from database.
 
         args:
             id (str) for getting story id
@@ -253,7 +253,9 @@ def delete_task(story_id, task_id):
             redirect (werkzeug.wrappers.response.Response)
         """
     task = Task.query.filter_by(task_id=task_id).first()
-    actual_times = TaskActualTimes.query.filter(task_id == task_id).all()
+    print(task)
+    actual_times = TaskActualTimes.query.filter_by(task_id=task_id).all()
+    print(actual_times)
     for row in actual_times:
         db.session.delete(row)
     db.session.delete(task)

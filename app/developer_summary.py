@@ -10,6 +10,7 @@ def summarize_developers(query):
 
     args:
         query (list of tuples of Task, TaskActualTimes, Developer)
+
     return:
         developers(list)
     """
