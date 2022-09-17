@@ -42,17 +42,18 @@ def story_id(id):
     return:
         render_template (str) for getting template
     """
+    print(request.method)
     if request.method == 'GET':
-        story = Story.query.filter_by(id=id).first()
         query_result = db.session.query(Task, TaskActualTimes).filter(
             Task.story_id == id).filter(
             Task.task_id == TaskActualTimes.task_id).all()
-        query_result_2 = db.session.query(Story, Task, TaskActualTimes).join(
-            Task, Story.id == Task.story_id, isouter=True).join(
-            TaskActualTimes, Task.task_id == TaskActualTimes.task_id, isouter=True).all()
+        story = Story.query.filter_by(id=id).first()
+        story = story.__dict__
+        story['actual_times_sum'] = 0
         tasks = get_task_values(query_result)
-        stories = get_story_values(query_result_2)
-        return render_template('task.html', title='Tracker', id=id, story=story, tasks=tasks, stories=stories)
+        for task in tasks:
+            story['actual_times_sum'] += task['actual_times_sum']
+        return render_template('task.html', title='Tracker', id=id, story=story, tasks=tasks)
 
 
 @app.route('/create_story', methods=['POST', 'GET'])
@@ -87,7 +88,7 @@ def create_story():
 @app.route('/story/<id>/update_story', methods=['POST', 'GET'])
 def update_story(id):
     """
-    This is the method for updating story.
+    This is the method for updating a story.
 
     If request is GET then template is rendered while for POST request
     it updates the values from frond end, assigns them to Story variables
@@ -117,10 +118,40 @@ def update_story(id):
         return redirect(url_for('story'))
 
 
+@app.route('/story/<id>/delete_story', methods=['POST'])
+def delete_story(id):
+    """
+        This is the method for deleting a story.
+        It deletes all associated values of Story, Task & TaskActualTimes models from a database.
+
+        args:
+            id (str) for getting story id
+
+        return:
+            redirect (werkzeug.wrappers.response.Response)
+        """
+    story = Story.query.get(id)
+    query_result = db.session.query(Task, TaskActualTimes).filter(
+        Task.story_id == id).filter(
+        Task.task_id == TaskActualTimes.task_id).all()
+    arr = []
+    for row in query_result:
+        task = row[0]
+        actual_time = row[1]
+        if task.task_id is not None and task.task_id not in arr:
+            arr.append(task.task_id)
+            db.session.delete(task)
+        if actual_time is not None:
+            db.session.delete(actual_time)
+    db.session.delete(story)
+    db.session.commit()
+    return redirect(url_for('story'))
+
+
 @app.route('/story/<id>/create_task', methods=['POST', 'GET'])
 def create_task(id):
     """
-    This the method for creating task.
+    This the method for creating a task.
 
     If request is GET then template is rendered while for POST request
     it takes the values from frond end, assigns them to Task variables
@@ -166,7 +197,7 @@ def create_task(id):
 @app.route('/story/<story_id>/update_task/<task_id>', methods=['POST', 'GET'])
 def update_task(story_id, task_id):
     """
-    This is the method for updating the task.
+    This is the method for updating a task.
 
     If request is GET then template is rendered with specific task queried and
     all developers queried and shown as dropdown on front end while for POST request
@@ -206,6 +237,28 @@ def update_task(story_id, task_id):
         db.session.add(item)
         db.session.commit()
         return redirect(url_for('story_id', id=story_id))
+
+
+@app.route('/story/<story_id>/delete_task/<task_id>', methods=['POST'])
+def delete_task(story_id, task_id):
+    """
+        This is the method for deleting a task.
+        It deletes all associated values of Task & TaskActualTimes models from a database.
+
+        args:
+            story_id (str) for getting and passing story id
+            task_id (str) for getting task id
+
+        return:
+            redirect (werkzeug.wrappers.response.Response)
+        """
+    task = Task.query.filter_by(task_id=task_id).first()
+    actual_times = TaskActualTimes.query.filter(task_id == task_id).all()
+    for row in actual_times:
+        db.session.delete(row)
+    db.session.delete(task)
+    db.session.commit()
+    return redirect(url_for('story_id', id=story_id))
 
 
 @app.route('/create_developer', methods=['POST', 'GET'])

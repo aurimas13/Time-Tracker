@@ -24,9 +24,17 @@
 <form action = "http://127.0.0.1:5000/story/{{ id }}/update_task/{{ task.task_id }}" method = "get">
     <input type="submit" value="Update Task" name="Update Task"/>
 </form>
+<p></p><form action = "http://127.0.0.1:5000/story/{{ id }}/delete_task/{{ task.task_id }}" method = "post">
+    <input type="submit" value="Delete Task" name="Delete Task"/>
+</form>
 {% endfor %}
 <h4>Want to add a new task? <h4/>
 <form action = "http://127.0.0.1:5000/story/{{ id }}/create_task" method = "get">
     <input type="submit" value="Add Task" name="Add Task"/>
 </form>
+<h4>Want to delete this story? <h4/>
+<form action = "http://127.0.0.1:5000/story/{{ story.id }}/delete_story" method = "post">
+    <input type="submit" value="Delete Story" name="Delete Story"/>
+</form>
+
 {% endblock %}
