@@ -7,9 +7,9 @@ def test_create_developer_post(test_client):
     assert response.request.path == "/story"
 
 
-def test_create_story_post(test_client):
+def test_create_delete_story_post(test_client):
     value = {
-            'story_name': 'Story 1',
+            'story_name': 'Story Two',
             'status': True,
             'story_description': 'Great one',
             'estimated_points': 5
@@ -19,13 +19,17 @@ def test_create_story_post(test_client):
     assert response.status_code == 200
     assert len(response.history) == 1
     assert response.request.path == "/story"
-    assert response.get_data(as_text=True).count("<div><p>Total time to complete the story <b>Story 1</b>") == 1
+    assert response.get_data(as_text=True).count("<div><p>Total time to complete the story <b>Story Two</b>") == 1
+    response_delete = test_client.post("/story/2/delete_story", data=value, follow_redirects=True)
+    assert response_delete.status_code == 200
+    assert response_delete.request.path == "/story"
+    assert response_delete.get_data(as_text=True).count("<div><p>Total time to complete the story <b>Story Two</b>") == 0
 
 
 def test_story_render_template(test_client):
     response = test_client.get('/story')
     print(response.get_data(as_text=True))
-    assert '<p>Total time to complete the story <b>Story 1</b>' in response.get_data(as_text=True)
+    assert '<p>Total time to complete the story <b>Story One</b>' in response.get_data(as_text=True)
     assert '<h3>Want to create a story?</h3>' in response.get_data(as_text=True)
     assert '<h3>Want to add a developer?</h3>' in response.get_data(as_text=True)
 
@@ -51,7 +55,7 @@ def test_update_story_post(test_client):
     assert response.get_data(as_text=True).count("<div><p>Total time to complete the story <b>Task Zero</b>") == 1
 
 
-def test_create_task_post(test_client):
+def test_create_delete_task_post(test_client):
     value = {
         'story_id': 1,
         'task_name': 'Task 1',
@@ -64,11 +68,17 @@ def test_create_task_post(test_client):
     }
     response = test_client.post("/story/1/create_task", data=value, follow_redirects=True)
     assert response.status_code == 200
-    assert len(response.history) == 1
     assert response.request.path == "/story/1"
     assert response.get_data(as_text=True).count(
         "<div><p>Description of the task <b>Task 1</b>: <b>Great one</b>.</p></div>"
     ) == 1
+    response_delete = test_client.post("/story/1/delete_task/2", data=value, follow_redirects=True)
+    assert response_delete.status_code == 200
+    assert response_delete.request.path == "/story/1"
+    assert response_delete.get_data(as_text=True).count(
+        "<div><p>Description of the task <b>Task 1</b>: <b>Great one</b>.</p></div>"
+    ) == 0
+
 
 
 def test_update_task_post(test_client):

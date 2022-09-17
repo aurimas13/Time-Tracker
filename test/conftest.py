@@ -11,7 +11,7 @@ def add_data_fixtures():
     fixture_developer = Developer(name='Alex')
     fixture_story = Story(
         estimated_points=10,
-        story_name='0',
+        story_name='Story One',
         status=True,
         description='0'
     )
