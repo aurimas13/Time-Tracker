@@ -1,0 +1,16 @@
+.title_padding {
+  padding: 12px;
+}
+
+.padding {
+  padding: 6px;
+}
+
+.float_left {
+  display: inline-block;
+}
+
+.button_style {
+  width: 150px;
+  margin: 2px;
+}

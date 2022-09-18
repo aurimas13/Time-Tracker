@@ -53,7 +53,7 @@ def story_id(id):
         tasks = get_task_values(query_result)
         for task in tasks:
             story['actual_times_sum'] += task['actual_times_sum']
-        return render_template('task.html', title='Tracker', id=id, story=story, tasks=tasks)
+        return render_template('task.html', title='Story', id=id, story=story, tasks=tasks)
 
 
 @app.route('/create_story', methods=['POST', 'GET'])
