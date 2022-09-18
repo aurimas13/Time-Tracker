@@ -77,8 +77,6 @@ Each task also has `Delete Task` button to delete a task for that story.
 It estimates points for how long it is estimated to complete the tasks of stories while the actual time taken to 
 complete the tasks are calculated for each developer and summarised at `Developer summary`.
 
-
-
 # Tests
 
 By navigating to the program/app folder where it is extracted - [Tracker](https://github.com/aurimas13/Tracker) - one folder before where test folder is held one can run these test commands:
