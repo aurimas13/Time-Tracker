@@ -11,5 +11,6 @@ DONE 10) functional tests
 DONE 11) Make total time shown at /story endpoint
 DONE 12) Program sumarrizes all developer times
 DONE 13) Make estimated times to not be added in summary for developers if it set when updating task.
-14) Fix variable names to represent what it does like comp_select should be developer ids. Do in the weekend.
+DONE 14) Fix variable names to represent what it does like comp_select should be developer ids. Do in the weekend.
 15) Make dev_id print developer_name in Story table
+16) Make summary print which stories developers worked on
