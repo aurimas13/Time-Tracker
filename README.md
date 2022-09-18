@@ -63,15 +63,16 @@ To look at the functionalities of the app refer to [Navigation](#navigation).
 # Navigation
 
 When you run `flask run` you will have a localhost name on terminal like ` Running on http://127.0.0.1:5000`. 
-Navigating to **http://127.0.0.1:5000/** or **http://127.0.0.1:5000/story** will open web page that at the top has four names:
+Navigating to **http://127.0.0.1:5000/** or **http://127.0.0.1:5000/story** will open the web page that at the top has four names:
 `Story`, `Create Story`, `Add Developer`, `Developer summary` and at the bottom questions of whether you want to create a story (`Create Story`)
 or add a developer (`Add Developer`).
 
-When you add a developer or two of them a dropdown will appear when creating or
-updating a task (`Add task` or`Update task`) that will allow to choose developers to be assigned to the task of the story:
+When you add a developer or two of them a dropdown will appear when creating or updating a task (`Add task` or`Update task`) that will allow to choose developers to be assigned to the task of the story:
 
-- After you press `See Story` you will be redirected to create tasks for it. If you wish to update a story press `Update Story` below if a story has been created.
+- After you press `See Story` you will be redirected to create tasks for it. If you wish to update a story press `Update Story` 
+- below if a story has been created or delete it by pressing `Delete Story` at the bottom.
 - When you press `See Story` you will be given an option to `Add task` or if one exists already `Update Task`.
+Each task also has `Delete task` button to delete a task for that story.
 - `Developer summary` gives a summary of all developers assigned to do the tasks of stories. 
 It estimates points for how long it is estimated to complete the tasks of stories while the actual time taken to 
 complete the tasks are calculated for each developer and summarised at `Developer summary`.
@@ -104,9 +105,9 @@ Public folder contains [todolist text file](https://github.com/aurimas13/Tracker
 
 # Logo
 
-The logo of the Birthday Reminder Application can be found [here](https://github.com/aurimas13/Tracker/blob/main/public/logo/time_tracker.png).
+The logo of the Time Tracker can be found [here](https://github.com/aurimas13/Tracker/blob/main/public/logo/time_tracker.png).
 
 # License
 
-The MIT [LICENSE](https://github.com/aurimas13/BirthdayReminderApp/blob/main/LICENSE)
+The MIT [LICENSE](https://github.com/aurimas13/Tracker/blob/main/LICENSE)
  
