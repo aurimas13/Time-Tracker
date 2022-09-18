@@ -1,26 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <body>
-        <h1>Create Story</h1>
-        <form method="POST">
-            <p>
-                <label for="name">Story name:</label>
-                <input id="name" name="story_name" type="text">
-            </p>
-            <p>
-                <label for="description">Story description:</label>
-                <input id="description" name="story_description" type="text">
-            </p>
-            <p>
-                <label for="estimated_points">Estimated points of the story:</label>
-                <input id="estimated_points" name="estimated_points" type="number">
-            </p>
-            <p>
-                <label for="act">Status</label>
-                <input id="act" type="checkbox" name="check">
-            </p>
-            <input type="submit" value="Create Story">
-        </form>
-    </body>
+<body>
+    <h2>Create Story</h2>
+    <form method="POST">
+        <p>
+            <label for="name">Story name:</label>
+            <input id="name" name="story_name" type="text">
+        </p>
+        <p>
+            <label for="description">Story description:</label>
+            <input id="description" name="story_description" type="text">
+        </p>
+        <p>
+            <label for="estimated_points">Estimated points of the story:</label>
+            <input id="estimated_points" name="estimated_points" type="number">
+        </p>
+        <p>
+            <label for="act">Status</label>
+            <input id="act" type="checkbox" name="check">
+        </p>
+        <input type="submit" value="Create Story">
+    </form>
+</body>
 {% endblock %}

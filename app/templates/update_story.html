@@ -1,27 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-        <h1>Update Story</h1>
-        <form method="POST">
+<h2>Update Story</h2>
+<form method="POST">
 <!--            <div><p>{{ story.story_name }}: <b>{{ story.description }}</b></p></div>-->
 <!--            <div><p>Story ID: <b>{{ story.id }}</b></p></div>-->
-            <div><p>The current story estimate points is <b>{{ story.estimated_points }}</b> and it is <b>{{ story.status }}</b> for activity.</p></div>
-            <p>
-                <label for="name">Story name:</label>
-                <input id="name" name="story_name" type="text" value="{{ story.story_name }}">
-            </p>
-            <p>
-                <label for="description">Story description:</label>
-                <input id="description" name="story_description" type="text" value="{{ story.description }}">
-            </p>
-            <p>
-                <label for="estimated_points">Estimated points of the story:</label>
-                <input id="estimated_points" name="estimated_points" type="number" value="{{ story.estimated_points }}">
-            </p>
-            <p>
-                <label for="act">Status</label>
-                <input id="act" type="checkbox" name="check" value="{{ story.status }}">
-            </p>
-            <input type="submit" value="Update Story">
-        </form>
+    <div><p>The current story estimate points is <b>{{ story.estimated_points }}</b> and it is <b>{{ story.status }}</b> for completion.</p></div>
+    <p>
+        <label for="name">Story name:</label>
+        <input id="name" name="story_name" type="text" value="{{ story.story_name }}">
+    </p>
+    <p>
+        <label for="description">Story description:</label>
+        <input id="description" name="story_description" type="text" value="{{ story.description }}">
+    </p>
+    <p>
+        <label for="estimated_points">Estimated points of the story:</label>
+        <input id="estimated_points" name="estimated_points" type="number" value="{{ story.estimated_points }}">
+    </p>
+    <p>
+        <label for="act">Status</label>
+        <input id="act" type="checkbox" name="check" value="{{ story.status }}">
+    </p>
+    <input type="submit" value="Update Story">
+</form>
 {% endblock %}
