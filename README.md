@@ -71,8 +71,8 @@ When you add a developer or two of them a dropdown will appear when creating or 
 
 - After you press `See Story` you will be redirected to create tasks for it. If you wish to update a story press `Update Story` 
 - below if a story has been created or delete it by pressing `Delete Story` at the bottom.
-- When you press `See Story` you will be given an option to `Add task` or if one exists already `Update Task`.
-Each task also has `Delete task` button to delete a task for that story.
+- When you press `See Story` you will be given an option to `Add Task` or if one exists already `Update Task`.
+Each task also has `Delete Task` button to delete a task for that story.
 - `Developer summary` gives a summary of all developers assigned to do the tasks of stories. 
 It estimates points for how long it is estimated to complete the tasks of stories while the actual time taken to 
 complete the tasks are calculated for each developer and summarised at `Developer summary`.
