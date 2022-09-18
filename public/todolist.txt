@@ -14,3 +14,4 @@ DONE 13) Make estimated times to not be added in summary for developers if it se
 DONE 14) Fix variable names to represent what it does like comp_select should be developer ids. Do in the weekend.
 15) Make dev_id print developer_name in Story table
 16) Make summary print which stories developers worked on
+17) Add pagination for multiple stories and tasks
