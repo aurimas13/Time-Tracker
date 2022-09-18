@@ -2,64 +2,68 @@
 
 {% block content %}
 <h1>Tasks of Story {{story.story_name}}</h1>
-<div><p>Total time to complete all tasks of a story <b>{{story.story_name}}</b> takes <b>{{story.actual_times_sum}}</b> hours.</p></div>
-<div></div>
-<div></div>
-task_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    story_id = db.Column(db.Integer, db.ForeignKey('story.id'))
-    task_name = db.Column(db.String(64))
-    status = db.Column(db.Boolean, default=False)
-    description = db.Column(db.String(140))
-    estimated_points = db.Column(db.Integer)
-    developer_id = db.Column(db.Integer, db.ForeignKey('developer.id'))
-    iteration = db.Column(db.String(64))
-{% for task in tasks %}
+    <div><p>Total time to complete all tasks of a story <b>{{story.story_name}}</b> takes <b>{{story.actual_times_sum}}</b> hours.</p></div>
+    <table id="data" class="table table-striped">
+        <thead>
         <tr>
-          <td>{{ task.task_name }}</td>
-          <td>{{ story.id }}</td>
-          <td>{{ task.task_id }}</td>
-          <td>{{ task.description }}</td>
-          <td>{{ task.estimated_points }}</td>
-          <td>{{ task.iteration }}</td>
-          <td>{{ task.status }}</td>
-          <td>
-          <form action = "http://127.0.0.1:5000/story/{{ story.id }}" method = "get">
-            <input class="button_style" type="submit" value="See Story" name="See Story"/>
-          </form>
-          <form action = "http://127.0.0.1:5000/story/{{ story.id }}/update_story" method = "get">
-            <input class="button_style" type="submit" value="Update Story" name="Update Story"/>
-          </form>
-          </td>
+            <th>Task name</th>
+            <th>Story ID</th>
+            <th>Task ID</th>
+            <th>Description</th>
+            <th>Estimated Points</th>
+            <th>Actual taken time</th>
+            <th>Interval of taken times</th>
+            <th>Iteration</th>
+            <th>Status</th>
+            <th>Actions</th>
         </tr>
-    <div><p>Description of the task <b>{{ task.task_name }}</b>: <b>{{ task.description }}</b>.</p></div>
-    <div><p>The estimated points for the task <b>{{ task.task_name }}</b> is <b>{{ task.estimated_points }} </b> points</b>.</p></div>
-    <div><p>Total time taken to complete the task is <b>{{task.actual_times_sum}}</b> hours</b>.</p></div>
-    <div><p>The task has <b>{{ task.status }}</b> status for completion as iteration is given as <b>{{ task.iteration }}</b>.</p></div>
-<h3>Individual times spent of task <b>{{ task.task_name }}</b> for completion:</h3>
-<div>
-    <p>The total time taken to complete has been updated with these hour values: </p>
-    {% for time in task.actual_times %}
-        {{time.actual_time}}
-        {% if not loop.last %}
-            ,
-        {% endif %}
-    {% endfor %}
-</div>
-<div><p></p></div>
-<form action = "http://127.0.0.1:5000/story/{{ id }}/update_task/{{ task.task_id }}" method = "get">
-    <input type="submit" value="Update Task" name="Update Task"/>
-</form>
-<p></p><form action = "http://127.0.0.1:5000/story/{{ id }}/delete_task/{{ task.task_id }}" method = "post">
-    <input type="submit" value="Delete Task" name="Delete Task"/>
-</form>
-{% endfor %}
-<h4>Want to add a new task? <h4/>
-<form action = "http://127.0.0.1:5000/story/{{ id }}/create_task" method = "get">
-    <input type="submit" value="Add Task" name="Add Task"/>
-</form>
-<h4>Want to delete this story? <h4/>
-<form action = "http://127.0.0.1:5000/story/{{ story.id }}/delete_story" method = "post">
-    <input type="submit" value="Delete Story" name="Delete Story"/>
-</form>
-
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+                <tr>
+                    <td>{{ task.task_name }}</td>
+                    <td>{{ story.id }}</td>
+                    <td>{{ task.task_id }}</td>
+                    <td>{{ task.description }}</td>
+                    <td>{{ task.estimated_points }}</td>
+                    <td>{{ task.actual_times_sum }}</td>
+                    <td>
+                        {% for time in task.actual_times %}
+                            {{time.actual_time}}
+                                {% if not loop.last %}
+                                    ,
+                                {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>{{ task.iteration }}</td>
+                    <td>{{ task.status }}</td>
+                    <td>
+                        <form action = "http://127.0.0.1:5000/story/{{ id }}/update_task/{{ task.task_id }}" method = "get">
+                            <input class="button_style" type="submit" value="Update Task" name="Update Task"/>
+                        </form>
+                        <form action = "http://127.0.0.1:5000/story/{{ id }}/delete_task/{{ task.task_id }}" method = "post">
+                            <input class="button_style" type="submit" value="Delete Task" name="Delete Task"/>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="float_left">
+        <form action = "http://127.0.0.1:5000/story/{{ id }}/create_task" method = "get">
+            <div>
+                <b class="padding">Want to add a new task?</b>
+                    <input class="button_style" type="submit" value="Add Task" name="Add Task" style="float: right;"/>
+            </div>
+        </form>
+    </div>
+    <p></p>
+    <div class="float_left">
+        <form action = "http://127.0.0.1:5000/story/{{ story.id }}/delete_story" method = "post">
+            <div>
+                <b class="padding">Want to delete this story?</b>
+                    <input class="button_style" type="submit" value="Delete Story" name="Delete Story" style="float: right;"/>
+            </div>
+        </form>
+    </div>
 {% endblock %}

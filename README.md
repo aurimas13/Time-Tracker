@@ -69,7 +69,7 @@ or add a developer (`Add Developer`).
 
 When you add a developer or two of them a dropdown will appear when creating or updating a task (`Add task` or`Update task`) that will allow to choose developers to be assigned to the task of the story:
 
-- After you press `See Story` you will be redirected to create tasks for it. If you wish to update a story press `Update Story` 
+- After you press `See Story` you will be redirected to add tasks for it. If you wish to update a story press `Update Story`.
 - below if a story has been created or delete it by pressing `Delete Story` at the bottom.
 - When you press `See Story` you will be given an option to `Add Task` or if one exists already `Update Task`.
 Each task also has `Delete Task` button to delete a task for that story.

@@ -62,7 +62,7 @@ def test_create_delete_task_post(test_client):
         'check': True,
         'task_description': 'Great one',
         'estimated_points': 5,
-        'comp_select': 1,
+        'developer': 1,
         'iter': 'From Story 1',
         'actual_time': '1',
     }
@@ -88,7 +88,7 @@ def test_update_task_post(test_client):
         'check': True,
         'task_description': 'Updated task',
         'estimated_points': 5,
-        'comp_select': 1,
+        'developer': 1,
         'iter': 'From Story One',
         'actual_time': '1',
     }

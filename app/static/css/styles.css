@@ -10,7 +10,32 @@
   display: inline-block;
 }
 
+.text_margin {
+  margin-right: 10px;
+}
+
 .button_style {
   width: 150px;
   margin: 2px;
+}
+
+#padding_value {
+    padding: 3px;
+}
+
+#border_colour {
+    /*border: 1px solid #767676;*/
+    width: 30%;
+}
+
+#drop_down {
+    width: 50%;
+}
+
+.input-group{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 50%;
 }

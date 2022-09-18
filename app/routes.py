@@ -175,7 +175,7 @@ def create_task(id):
             story_id=id,
             status=task['check'] == 'on',
             description=task['task_description'],
-            developer_id=task['comp_select'],
+            developer_id=task['developer'],
             estimated_points=task['estimated_points'],
             iteration=task['iter'])
         db.session.add(add_task)
@@ -223,7 +223,7 @@ def update_task(story_id, task_id):
         item = Task.query.get(task_id)
         item.task_name = request.form['task_name']
         item.story_id = story_id
-        item.developer_id = request.form['comp_select']
+        item.developer_id = request.form['developer']
         item.status = 'check' in request.form
         item.description = request.form['task_description']
         item.estimated_points = request.form['estimated_points']
