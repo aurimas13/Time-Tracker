@@ -168,14 +168,12 @@ def create_task(id):
     """
     if request.method == 'POST':
         task = request.form
-        print('lala', id)
-        print(task)
         add_task = Task(
             task_name=task['task_name'],
             story_id=id,
             status=task['check'] == 'on',
             description=task['task_description'],
-            developer_id=task['developer_id'],
+            developer_id=task['developer'],
             estimated_points=task['estimated_points'],
             iteration=task['iter'])
         db.session.add(add_task)
@@ -223,7 +221,7 @@ def update_task(story_id, task_id):
         item = Task.query.get(task_id)
         item.task_name = request.form['task_name']
         item.story_id = story_id
-        item.developer_id = request.form['developer_id']
+        item.developer_id = request.form['developer']
         item.status = 'check' in request.form
         item.description = request.form['task_description']
         item.estimated_points = request.form['estimated_points']
