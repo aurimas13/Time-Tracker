@@ -1,5 +1,5 @@
 <p align=center>
-  <img height="400px" src="https://github.com/aurimas13/Tracker/blob/main/public/logo/time_tracker.png"/>
+  <img height="300px" src="https://github.com/aurimas13/Tracker/blob/main/public/logo/time_tracker.png"/>
 </p>
 
 <p align="center" > <b> Time Tracker </b> </p>
