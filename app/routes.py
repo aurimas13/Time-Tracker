@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, request
 from app import app, db
 from app.models import Story, Task, Developer, TaskActualTimes
-from app.developer_service import add_developer
+from app.developer_service import adding_developer
 from app.developer_summary import summarize_developers
 from app.story_service import get_story_values
 from app.task_service import get_task_values
@@ -42,7 +42,6 @@ def story_id(id):
     return:
         render_template (str) for getting template
     """
-    print(request.method)
     if request.method == 'GET':
         query_result = db.session.query(Task, TaskActualTimes).filter(
             Task.story_id == id).filter(
@@ -175,7 +174,7 @@ def add_task(id):
             story_id=id,
             status=task['check'] == 'on',
             description=task['task_description'],
-            developer_id=task['developer_id'],
+            developer_id=task['developer'],
             estimated_points=task['estimated_points'],
             iteration=task['iter'])
         db.session.add(add_task)
@@ -223,7 +222,7 @@ def update_task(story_id, task_id):
         item = Task.query.get(task_id)
         item.task_name = request.form['task_name']
         item.story_id = story_id
-        item.developer_id = request.form['developer_id']
+        item.developer_id = request.form['developer']
         item.status = 'check' in request.form
         item.description = request.form['task_description']
         item.estimated_points = request.form['estimated_points']
@@ -279,7 +278,7 @@ def add_developer():
             redirect (werkzeug.wrappers.response.Response)
     """
     if request.method == 'POST':
-        add_developer(request.form)
+        adding_developer(request.form)
         return redirect(url_for('story'))
 
     return render_template('add_developer.html', title='Tracker')
