@@ -56,8 +56,8 @@ def story_id(id):
         return render_template('task.html', title='Story', id=id, story=story, tasks=tasks)
 
 
-@app.route('/create_story', methods=['POST', 'GET'])
-def create_story():
+@app.route('/add_story', methods=['POST', 'GET'])
+def add_story():
     if request.method == 'POST':
         """
         This is the method for creating a story.
@@ -82,7 +82,7 @@ def create_story():
         db.session.commit()
         return redirect(url_for('story'))
 
-    return render_template('create_story.html', title='Tracker')
+    return render_template('add_story.html', title='Tracker')
 
 
 @app.route('/story/<id>/update_story', methods=['POST', 'GET'])
@@ -148,8 +148,8 @@ def delete_story(id):
     return redirect(url_for('story'))
 
 
-@app.route('/story/<id>/create_task', methods=['POST', 'GET'])
-def create_task(id):
+@app.route('/story/<id>/add_task', methods=['POST', 'GET'])
+def add_task(id):
     """
     This the method for creating a task.
 
@@ -175,7 +175,7 @@ def create_task(id):
             story_id=id,
             status=task['check'] == 'on',
             description=task['task_description'],
-            developer_id=task['developer'],
+            developer_id=task['developer_id'],
             estimated_points=task['estimated_points'],
             iteration=task['iter'])
         db.session.add(add_task)
@@ -191,7 +191,7 @@ def create_task(id):
         return redirect(url_for('story_id', id=id))
 
     developers = Developer.query.all()
-    return render_template('create_task.html', title='Tracker', developers=developers)
+    return render_template('add_task.html', title='Tracker', developers=developers)
 
 
 @app.route('/story/<story_id>/update_task/<task_id>', methods=['POST', 'GET'])
@@ -223,7 +223,7 @@ def update_task(story_id, task_id):
         item = Task.query.get(task_id)
         item.task_name = request.form['task_name']
         item.story_id = story_id
-        item.developer_id = request.form['developer']
+        item.developer_id = request.form['developer_id']
         item.status = 'check' in request.form
         item.description = request.form['task_description']
         item.estimated_points = request.form['estimated_points']
@@ -263,8 +263,8 @@ def delete_task(story_id, task_id):
     return redirect(url_for('story_id', id=story_id))
 
 
-@app.route('/create_developer', methods=['POST', 'GET'])
-def create_developer():
+@app.route('/add_developer', methods=['POST', 'GET'])
+def add_developer():
     """
     This is the method for creating a developer.
 
@@ -282,7 +282,7 @@ def create_developer():
         add_developer(request.form)
         return redirect(url_for('story'))
 
-    return render_template('create_developer.html', title='Tracker')
+    return render_template('add_developer.html', title='Tracker')
 
 
 @app.route('/developer_summary', methods=['POST', 'GET'])
