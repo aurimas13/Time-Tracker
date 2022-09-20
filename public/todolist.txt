@@ -13,8 +13,9 @@ DONE 12) Program sumarrizes all developer times
 DONE 13) Make estimated times to not be added in summary for developers if it set when updating task.
 DONE 14) Fix variable names to represent what it does like comp_select should be developers. Do in the weekend.
 DONE 15) Fix create to add names
-NEED TO DO 16) Handle error if task created without a developer
-NICE TO HAVE 17) Make dev_id print developer_name in Story table.
-NICE TO HAVE 18) Make summary print which stories developers worked on.
-NICE TO HAVE 19) Add pagination for multiple stories and tasks.
-NICE TO HAVE 20) Add actual_times_sum in description when go to 'Update Story'.
+NEED TO DO 16) Handle error if task created without a developer.
+NICE TO DO 17) Delete a developer.
+NICE TO HAVE 18) Make dev_id print developer_name in Story table.
+NICE TO HAVE 19) Make summary print which stories developers worked on.
+NICE TO HAVE 20) Add pagination for multiple stories and tasks.
+NICE TO HAVE 21) Add actual_times_sum in description when go to 'Update Story'.
