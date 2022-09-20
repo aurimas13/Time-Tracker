@@ -12,7 +12,7 @@ DONE 11) Make total time shown at /story endpoint
 DONE 12) Program sumarrizes all developer times
 DONE 13) Make estimated times to not be added in summary for developers if it set when updating task.
 DONE 14) Fix variable names to represent what it does like comp_select should be developers. Do in the weekend.
-NEED TO DO 15) handle errors when creating a tsak but there are no developers.
+DONE 15) Handle error when creating a task but there are no developers.
 NICE TO HAVE 15) Make dev_id print developer_name in Story table.
 NICE TO HAVE 16) Make summary print which stories developers worked on.
 NICE TO HAVE 17) Add pagination for multiple stories and tasks.

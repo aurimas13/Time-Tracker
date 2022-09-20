@@ -1,10 +1,15 @@
-from flask import render_template, redirect, url_for, request
+import json
+
+import werkzeug
+import sys
+from flask import render_template, redirect, url_for, request, Response
 from app import app, db
 from app.models import Story, Task, Developer, TaskActualTimes
 from app.developer_service import adding_developer
 from app.developer_summary import summarize_developers
 from app.story_service import get_story_values
 from app.task_service import get_task_values
+
 
 
 @app.route('/', methods=['POST', 'GET'])
@@ -167,23 +172,30 @@ def add_task(id):
     """
     if request.method == 'POST':
         task = request.form
-        add_task = Task(
-            task_name=task['task_name'],
-            story_id=id,
-            status=task['check'] == 'on',
-            description=task['task_description'],
-            developer_id=task['developer'],
-            estimated_points=task['estimated_points'],
-            iteration=task['iter'])
-        db.session.add(add_task)
-        db.session.flush()
-        db.session.refresh(add_task)
-        if request.form['actual_time'] != '0' and request.form['actual_time'] != '':
-            time = TaskActualTimes(
-                task_id=add_task.task_id,
-                actual_time=task['actual_time']
-            )
-            db.session.add(time)
+        try:
+            if task['developer_id'] is not None:
+                add_task = Task(
+                task_name=task['task_name'],
+                story_id=id,
+                status=task['check'] == 'on',
+                description=task['task_description'],
+                developer_id=task['developer'],
+                estimated_points=task['estimated_points'],
+                iteration=task['iter'])
+                db.session.add(add_task)
+                db.session.flush()
+                db.session.refresh(add_task)
+                if request.form['actual_time'] != '0' and request.form['actual_time'] != '':
+                    time = TaskActualTimes(
+                        task_id=add_task.task_id,
+                        actual_time=task['actual_time']
+                    )
+                    db.session.add(time)
+        except werkzeug.exceptions.BadRequestKeyError as error:
+            res_str = json.dumps({"error": f"There are no developers to choose from hence need to add a developer first."})
+            resp = Response(response=res_str, status=400, mimetype="application/json")
+            sys.stderr.write(f'ERROR : {error}\n')
+            return resp
         db.session.commit()
         return redirect(url_for('story_id', id=id))
 
