@@ -13,7 +13,7 @@ def test_create_delete_story_post(test_client):
             'story_description': 'Great one',
             'estimated_points': 5
     }
-    response = test_client.post("/create_story", data=value, follow_redirects=True)
+    response = test_client.post("/add_story", data=value, follow_redirects=True)
     assert response.status_code == 200
     assert len(response.history) == 1
     assert response.request.path == "/story"
@@ -31,10 +31,10 @@ def test_story_render_template(test_client):
     assert '<b class="padding">Want to add a developer? </b>' in response.get_data(as_text=True)
 
 
-def test_create_story_render_template(test_client):
-    response = test_client.get('/create_story')
+def test_add_story_render_template(test_client):
+    response = test_client.get('/add_story')
     assert '<label for="name">Story name:</label>' in response.get_data(as_text=True)
-    assert '<input type="submit" value="Create Story">' in response.get_data(as_text=True)
+    assert '<input type="submit" value="Add Story">' in response.get_data(as_text=True)
 
 
 def test_update_story_post(test_client):
@@ -62,7 +62,7 @@ def test_create_delete_task_post(test_client):
         'iter': 'From Story 1',
         'actual_time': '1',
     }
-    response = test_client.post("/story/1/create_task", data=value, follow_redirects=True)
+    response = test_client.post("/story/1/add_task", data=value, follow_redirects=True)
     assert response.status_code == 200
     assert response.request.path == "/story/1"
     assert response.get_data(as_text=True).count("<td>Great One</td>") == 1
@@ -90,8 +90,8 @@ def test_update_task_post(test_client):
     assert response.get_data(as_text=True).count("<td>Updated task</td>") == 1
 
 
-def test_create_task_render_template(test_client):
-    response = test_client.get('/story/1/create_task')
+def test_add_task_render_template(test_client):
+    response = test_client.get('/story/1/add_task')
     assert '<label for="name">Task name</label>' in response.get_data(as_text=True)
     assert '<span class="input-group-addon text_margin">Please select a developer:</span>' in response.get_data(as_text=True)
 
