@@ -2,7 +2,7 @@ from app.models import Developer
 from app.database_utils import save_changes
 
 
-def add_developer(form):
+def g_developer(form):
     """
     This a method that creates a new developer and saves it to a database.
 
