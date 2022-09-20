@@ -167,8 +167,6 @@ def add_task(id):
     """
     if request.method == 'POST':
         task = request.form
-        print('lala', id)
-        print(task)
         add_task = Task(
             task_name=task['task_name'],
             story_id=id,
@@ -252,9 +250,7 @@ def delete_task(story_id, task_id):
             redirect (werkzeug.wrappers.response.Response)
         """
     task = Task.query.filter_by(task_id=task_id).first()
-    print(task)
     actual_times = TaskActualTimes.query.filter_by(task_id=task_id).all()
-    print(actual_times)
     for row in actual_times:
         db.session.delete(row)
     db.session.delete(task)
