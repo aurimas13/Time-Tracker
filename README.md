@@ -64,7 +64,7 @@ To look at the functionalities of the app refer to [Navigation](#navigation).
 
 When you run `flask run` you will have a localhost name on terminal like ` Running on http://127.0.0.1:5000`. 
 Navigating to **http://127.0.0.1:5000/** or **http://127.0.0.1:5000/story** will open the web page that at the top has four names:
-`Story`, `Create Story`, `Add Developer`, `Developer summary` and at the bottom questions of whether you want to create a story (`Create Story`)
+`Story`, `Add Story`, `Add Developer`, `Developer summary` and at the bottom questions of whether you want to create a story (`Create Story`)
 or add a developer (`Add Developer`).
 
 When you add a developer or two of them a dropdown will appear when creating or updating a task (`Add task` or`Update task`) that will allow to choose developers to be assigned to the task of the story:

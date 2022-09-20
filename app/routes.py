@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, request
 from app import app, db
 from app.models import Story, Task, Developer, TaskActualTimes
-from app.developer_service import add_developer
+from app.developer_service import adding_developer
 from app.developer_summary import summarize_developers
 from app.story_service import get_story_values
 from app.task_service import get_task_values
@@ -42,7 +42,6 @@ def story_id(id):
     return:
         render_template (str) for getting template
     """
-    print(request.method)
     if request.method == 'GET':
         query_result = db.session.query(Task, TaskActualTimes).filter(
             Task.story_id == id).filter(
@@ -251,9 +250,7 @@ def delete_task(story_id, task_id):
             redirect (werkzeug.wrappers.response.Response)
         """
     task = Task.query.filter_by(task_id=task_id).first()
-    print(task)
     actual_times = TaskActualTimes.query.filter_by(task_id=task_id).all()
-    print(actual_times)
     for row in actual_times:
         db.session.delete(row)
     db.session.delete(task)
@@ -261,8 +258,8 @@ def delete_task(story_id, task_id):
     return redirect(url_for('story_id', id=story_id))
 
 
-@app.route('/create_developer', methods=['POST', 'GET'])
-def create_developer():
+@app.route('/add_developer', methods=['POST', 'GET'])
+def add_developer():
     """
     This is the method for creating a developer.
 
@@ -277,10 +274,10 @@ def create_developer():
             redirect (werkzeug.wrappers.response.Response)
     """
     if request.method == 'POST':
-        add_developer(request.form)
+        adding_developer(request.form)
         return redirect(url_for('story'))
 
-    return render_template('create_developer.html', title='Tracker')
+    return render_template('add_developer.html', title='Tracker')
 
 
 @app.route('/developer_summary', methods=['POST', 'GET'])

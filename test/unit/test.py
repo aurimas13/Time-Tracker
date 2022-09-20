@@ -1,5 +1,5 @@
 from app.models import Story, Task, TaskActualTimes, Developer
-from app.developer_service import add_developer
+from app.developer_service import adding_developer
 from app.developer_summary import summarize_developers
 from app.story_service import get_story_values
 from app.task_service import get_task_values
@@ -7,8 +7,8 @@ from app.task_service import get_task_values
 
 def test_add_developer():
     test_dev = {'developer_name': 'Adam'}
-    assert add_developer(test_dev) is True
-    assert add_developer(test_dev) is False
+    assert adding_developer(test_dev) is True
+    assert adding_developer(test_dev) is False
 
 
 def test_developers_summary():

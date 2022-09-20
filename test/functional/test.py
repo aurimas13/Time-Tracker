@@ -1,6 +1,6 @@
-def test_create_developer_post(test_client):
+def test_add_developer_post(test_client):
     value = {'developer_name': 'Adam'}
-    response = test_client.post("/create_developer", data=value, follow_redirects=True)
+    response = test_client.post("/add_developer", data=value, follow_redirects=True)
     assert response.status_code == 200
     assert len(response.history) == 1
     assert response.request.path == "/story"
