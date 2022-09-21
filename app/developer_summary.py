@@ -34,16 +34,12 @@ def summarize_developers(query):
 
         if dev_id in developers:
             if task_idx not in tasks_ids:
-                print(f'1 - {task_idx}')
                 tasks_ids.append(task_idx)
-                print(f'2 - {tasks_ids}')
                 developers[dev_id]['estimated_points'] += task['estimated_points']
             developers[dev_id]['actual_times_sum'] += actual_time['actual_time']
 
         else:
             tasks_ids.append(task_idx)
-            print(f'3 - {task_idx}')
-            print(f'4 - {tasks_ids}')
 
             developers[dev_id] = developer
             developers[dev_id]['estimated_points'] = task['estimated_points']
