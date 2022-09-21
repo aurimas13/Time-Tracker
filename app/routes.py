@@ -2,7 +2,7 @@ import json
 
 import werkzeug
 import sys
-from flask import render_template, redirect, url_for, request, Response
+from flask import render_template, flash, redirect, url_for, request, Response
 from app import app, db
 from app.models import Story, Task, Developer, TaskActualTimes
 from app.developer_service import adding_developer
@@ -170,6 +170,7 @@ def add_task(id):
         elif POST:
             redirect (werkzeug.wrappers.response.Response)
     """
+    developers = Developer.query.all()
     if request.method == 'POST':
         task = request.form
         try:
@@ -190,15 +191,14 @@ def add_task(id):
                     actual_time=task['actual_time']
                 )
             db.session.add(time)
+            db.session.commit()
         except werkzeug.exceptions.BadRequestKeyError as error:
-            res_str = json.dumps({"error": f"There are no developers to choose from hence need to add a developer first."})
-            resp = Response(response=res_str, status=400, mimetype="application/json")
+            error = 'There are no developers to choose from hence need to add a developer first.'
             sys.stderr.write(f'ERROR : {error}\n')
-            return resp
-        db.session.commit()
+            return render_template('add_task.html', title='Tracker', developers=developers, error=error)
+
         return redirect(url_for('story_id', id=id))
 
-    developers = Developer.query.all()
     return render_template('add_task.html', title='Tracker', developers=developers)
 
 

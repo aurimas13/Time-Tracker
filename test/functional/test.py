@@ -27,7 +27,7 @@ def test_create_delete_story_post(test_client):
 def test_story_render_template(test_client):
     response = test_client.get('/story')
     assert '<td>Story One</td>' in response.get_data(as_text=True)
-    assert '<b class="padding">Want to create a story?</b>' in response.get_data(as_text=True)
+    assert '<b class="padding">Want to add a story?</b>' in response.get_data(as_text=True)
     assert '<b class="padding">Want to add a developer? </b>' in response.get_data(as_text=True)
 
 

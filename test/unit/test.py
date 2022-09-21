@@ -21,7 +21,8 @@ def test_developers_summary():
                 description='Something is happening again',
                 estimated_points=121,
                 developer_id=1,
-                iteration='Story 1'
+                iteration='Story 1',
+                task_id=1
             ),
             TaskActualTimes(
                 task_id=2,
@@ -43,7 +44,8 @@ def test_developers_summary_multiple_task_same_developer():
                 description='Something is happening again',
                 estimated_points=121,
                 developer_id=1,
-                iteration='Story 1'
+                iteration='Story 1',
+                task_id=1
             ),
             TaskActualTimes(
                 task_id=2,
@@ -57,9 +59,10 @@ def test_developers_summary_multiple_task_same_developer():
                 task_name='Three',
                 status=True,
                 description='Something is happening again',
-                estimated_points=123,
+                estimated_points=121,
                 developer_id=1,
-                iteration='Story 2'
+                iteration='Story 2',
+                task_id=1
             ),
             TaskActualTimes(
                 task_id=2,
@@ -68,7 +71,7 @@ def test_developers_summary_multiple_task_same_developer():
             Developer(id=1, name='Alex')
         )
     ]
-    assert summarize_developers(query) == [{'id': 1, 'name': 'Alex', 'actual_times_sum': 246, 'estimated_points': 244}]
+    assert summarize_developers(query) == [{'id': 1, 'name': 'Alex', 'actual_times_sum': 246, 'estimated_points': 121}]
 
 
 def test_developers_summary_multiple_tasks_different_developers():
@@ -81,7 +84,8 @@ def test_developers_summary_multiple_tasks_different_developers():
                 description='Something is happening again',
                 estimated_points=121,
                 developer_id=1,
-                iteration='Story 1'
+                iteration='Story 1',
+                task_id=1
             ),
             TaskActualTimes(
                 task_id=2,
@@ -97,7 +101,8 @@ def test_developers_summary_multiple_tasks_different_developers():
                 description='Something is happening again',
                 estimated_points=123,
                 developer_id=1,
-                iteration='Story 2'
+                iteration='Story 2',
+                task_id=2
             ),
             TaskActualTimes(
                 task_id=3,

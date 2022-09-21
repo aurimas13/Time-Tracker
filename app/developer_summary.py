@@ -15,6 +15,7 @@ def summarize_developers(query):
         developers(list)
     """
     developers = {}
+    tasks_ids = []
     for row in query:
         task = row[0].__dict__
         task['estimated_points'] = task['estimated_points'] if task['estimated_points'] else 0
@@ -22,6 +23,7 @@ def summarize_developers(query):
         actual_time['actual_time'] = actual_time['actual_time'] if actual_time['actual_time'] else 0
         developer = row[2].__dict__
         dev_id = developer['id']
+        task_idx = task['task_id']
 
         if '_sa_instance_state' in task:
             del task['_sa_instance_state']
@@ -31,10 +33,18 @@ def summarize_developers(query):
             del developer['_sa_instance_state']
 
         if dev_id in developers:
-            developers[dev_id]['estimated_points'] += task['estimated_points']
+            if task_idx not in tasks_ids:
+                print(f'1 - {task_idx}')
+                tasks_ids.append(task_idx)
+                print(f'2 - {tasks_ids}')
+                developers[dev_id]['estimated_points'] += task['estimated_points']
             developers[dev_id]['actual_times_sum'] += actual_time['actual_time']
 
         else:
+            tasks_ids.append(task_idx)
+            print(f'3 - {task_idx}')
+            print(f'4 - {tasks_ids}')
+
             developers[dev_id] = developer
             developers[dev_id]['estimated_points'] = task['estimated_points']
             developers[dev_id]['actual_times_sum'] = actual_time['actual_time']
