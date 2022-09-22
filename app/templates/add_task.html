@@ -3,6 +3,9 @@
 {% block content %}
 <h2>Add Task</h2>
 <form method="POST">
+    {% if error %}
+        <p class=error><strong>Error:</strong> {{ error }}
+    {% endif %}
     <p>
         <label for="name">Task name</label>
         <input id="name" name="task_name" type="text">

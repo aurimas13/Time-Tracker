@@ -9,6 +9,7 @@ from app.story_service import get_story_values
 from app.task_service import get_task_values
 
 
+
 @app.route('/', methods=['POST', 'GET'])
 @app.route('/story', methods=['POST', 'GET'])
 def story():
@@ -62,12 +63,12 @@ def add_story():
     if request.method == 'POST':
         """
         This is the method for creating a story.
-
+        
         If request is GET then template is rendered while for POST request
         it takes the values from frond end, assigns them to Story variables
         and saves to database.
-
-
+        
+        
         returns:
             if GET:
                 render_template (str) for getting template
@@ -172,13 +173,13 @@ def add_task(id):
         task = request.form
         try:
             add_task = Task(
-                task_name=task['task_name'],
-                story_id=id,
-                status=task['check'] == 'on',
-                description=task['task_description'],
-                developer_id=task['developer'],
-                estimated_points=task['estimated_points'],
-                iteration=task['iter'])
+            task_name=task['task_name'],
+            story_id=id,
+            status=task['check'] == 'on',
+            description=task['task_description'],
+            developer_id=task['developer'],
+            estimated_points=task['estimated_points'],
+            iteration=task['iter'])
             db.session.add(add_task)
             db.session.flush()
             db.session.refresh(add_task)
