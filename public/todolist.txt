@@ -18,4 +18,6 @@ NICE TO HAVE 16) Make summary print which stories developers worked on.
 NICE TO HAVE 17) Add pagination for multiple stories and tasks.
 NICE TO HAVE 18) Add actual_times_sum in description when go to 'Update Story'.
 NICE TO DO 19) Optimize loops at routes into functions if possible.
-NICE TO DO 20) Add Dockerfile.
+DONE 20) Add Dockerfile.
+TO DO 21) Error handle'inti.
+TO DO 22) Change for 127.0.0.1 to use APP_BASE_URL.

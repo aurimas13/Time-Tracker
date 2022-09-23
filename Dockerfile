@@ -3,5 +3,5 @@ WORKDIR /Tracker
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY . /Tracker
-CMD ["python3", "-m", "flask", "db", "upgrade"]
+RUN flask db upgrade
 CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
