@@ -20,4 +20,4 @@ NICE TO HAVE 18) Add actual_times_sum in description when go to 'Update Story'.
 NICE TO DO 19) Optimize loops at routes into functions if possible.
 DONE 20) Add Dockerfile.
 TO DO 21) Padaryti papildomus error handle'inimus.
-TO DO 22) Change for 127.0.0.1 to use APP_BASE_URL.
+TO DO 22) Change for 127.0.0.1 to use APP_BASE_URL for proper Docker run.
