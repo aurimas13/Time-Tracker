@@ -63,7 +63,7 @@ To look at the functionalities of the app refer to [Navigation](#navigation).
 # Navigation
 
 When you run `flask run` you will have a localhost name on terminal like ` Running on http://127.0.0.1:5000`. 
-Navigating to **http://127.0.0.1:5000/** or **http://127.0.0.1:5000/story** will open the web page that at the top has four names:
+Navigating to **http://host/** or **http://host/story** will open the web page that at the top has four names:
 `Story`, `Add Story`, `Add Developer`, `Developer summary` and at the bottom questions of whether you want to create a story (`Create Story`)
 or add a developer (`Add Developer`).
 

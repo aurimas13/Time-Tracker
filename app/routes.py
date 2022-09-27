@@ -1,3 +1,5 @@
+import os
+
 import werkzeug
 import sys
 from flask import render_template, flash, redirect, url_for, request, Response
@@ -9,7 +11,8 @@ from app.story_service import get_story_values
 from app.task_service import get_task_values
 
 
-
+APP_BASE_URL = os.getenv("APP_BASE_URL")
+PORT = os.getenv("PORT")
 @app.route('/', methods=['POST', 'GET'])
 @app.route('/story', methods=['POST', 'GET'])
 def story():
@@ -27,7 +30,7 @@ def story():
             Task, Story.id == Task.story_id, isouter=True).join(
             TaskActualTimes, Task.task_id == TaskActualTimes.task_id, isouter=True).all()
         stories = get_story_values(query_result)
-        return render_template('story.html', title='Stories', stories=stories)
+        return render_template('story.html', title='Stories', stories=stories, host=APP_BASE_URL)
 
 
 @app.route('/story/<id>', methods=['POST', 'GET'])
@@ -55,7 +58,7 @@ def story_id(id):
         tasks = get_task_values(query_result)
         for task in tasks:
             story['actual_times_sum'] += task['actual_times_sum']
-        return render_template('task.html', title='Story', id=id, story=story, tasks=tasks)
+        return render_template('task.html', title='Story', id=id, story=story, tasks=tasks, host=APP_BASE_URL)
 
 
 @app.route('/add_story', methods=['POST', 'GET'])
@@ -84,7 +87,7 @@ def add_story():
         db.session.commit()
         return redirect(url_for('story'))
 
-    return render_template('add_story.html', title='Tracker')
+    return render_template('add_story.html', title='Tracker', host=APP_BASE_URL)
 
 
 @app.route('/story/<id>/update_story', methods=['POST', 'GET'])
@@ -107,7 +110,7 @@ def update_story(id):
     """
     if request.method == 'GET':
         story = Story.query.get(id)
-        return render_template('update_story.html', title='Tracker', story=story)
+        return render_template('update_story.html', title='Tracker', story=story, host=APP_BASE_URL)
 
     elif request.method == 'POST':
         item = Story.query.get(id)
@@ -193,11 +196,11 @@ def add_task(id):
         except werkzeug.exceptions.BadRequestKeyError as error:
             error = 'There are no developers to choose from hence need to add a developer first.'
             sys.stderr.write(f'ERROR : {error}\n')
-            return render_template('add_task.html', title='Tracker', developers=developers, error=error)
+            return render_template('add_task.html', title='Tracker', developers=developers, error=error, host=APP_BASE_URL)
 
         return redirect(url_for('story_id', id=id))
 
-    return render_template('add_task.html', title='Tracker', developers=developers)
+    return render_template('add_task.html', title='Tracker', developers=developers, host=APP_BASE_URL)
 
 
 @app.route('/story/<story_id>/update_task/<task_id>', methods=['POST', 'GET'])
@@ -223,7 +226,7 @@ def update_task(story_id, task_id):
     if request.method == 'GET':
         task = Task.query.get(task_id)
         developers = Developer.query.all()
-        return render_template('update_task.html', title='Tracker', task=task, developers=developers)
+        return render_template('update_task.html', title='Tracker', task=task, developers=developers, host=APP_BASE_URL)
 
     elif request.method == 'POST':
         item = Task.query.get(task_id)
@@ -305,4 +308,4 @@ def developer_summary():
             Task.developer_id == Developer.id).filter(
             Task.task_id == TaskActualTimes.task_id).all()
         developers_list = summarize_developers(query_result)
-        return render_template('developer.html', developers=developers_list)
+        return render_template('developer.html', developers=developers_list, host=APP_BASE_URL)
