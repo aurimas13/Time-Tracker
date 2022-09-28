@@ -5,14 +5,19 @@ DONE 4) Story actual time is calculated while adding all actual times of tasks
 DONE 5) Task have fields developer and iteration
 DONE 6) Program calculates estimated and actual time for story/task
 DONE 7) Developers are chosen from drop-down menu
-DONE 8) Parasyti if if nulis
-DONE 9) unit tests
-DONE 10) functional tests
+DONE 8) Write if if zero
+DONE 9) Unit tests
+DONE 10) Functional tests
 DONE 11) Make total time shown at /story endpoint
 DONE 12) Program sumarrizes all developer times
 DONE 13) Make estimated times to not be added in summary for developers if it set when updating task.
 DONE 14) Fix variable names to represent what it does like comp_select should be developers. Do in the weekend.
-NICE TO HAVE 15) Make dev_id print developer_name in Story table.
-NICE TO HAVE 16) Make summary print which stories developers worked on.
-NICE TO HAVE 17) Add pagination for multiple stories and tasks.
-NICE TO HAVE 18) Add actual_times_sum in description when go to 'Update Story'.
+DONE 15) Handle error when creating a task but there are no developers.
+DONE 16) Add Dockerfile.
+DOME 17) Change for 127.0.0.1 to use APP_BASE_URL for proper Docker run.
+NICE TO HAVE 18) Make dev_id print developer_name in Story table.
+NICE TO HAVE 19) Make summary print which stories developers worked on.
+NICE TO HAVE 20) Add pagination for multiple stories and tasks.
+NICE TO HAVE 21) Add actual_times_sum in description when go to 'Update Story'.
+NICE TO DO 22) Optimize loops at routes into functions if possible.
+NICE TO DO 23) Do additional tests.

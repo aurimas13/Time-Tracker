@@ -21,6 +21,7 @@ Please refer to [Requirements](#requirements) for importing required libraries b
 - [Usage](#usage)
 - [Navigation](#navigation)
 - [Tests](#tests)
+- [DOCKER](#docker)
 - [Public](#public)
 - [Logo](#photo)
 - [License](#license)
@@ -63,8 +64,8 @@ To look at the functionalities of the app refer to [Navigation](#navigation).
 # Navigation
 
 When you run `flask run` you will have a localhost name on terminal like ` Running on http://127.0.0.1:5000`. 
-Navigating to **http://127.0.0.1:5000/** or **http://127.0.0.1:5000/story** will open the web page that at the top has four names:
-`Story`, `Add Story`, `Add Developer`, `Developer summary` and at the bottom questions of whether you want to create a story (`Create Story`)
+Navigating to **http://localhost:5000/** or **http://localhost:5000/story** will open the web page that at the top has four names:
+`Stories`, `Add Story`, `Add Developer`, `Developer summary` and at the bottom questions of whether you want to add a story (`Add Story`)
 or add a developer (`Add Developer`).
 
 When you add a developer or two of them a dropdown will appear when creating or updating a task (`Add task` or`Update task`) that will allow to choose developers to be assigned to the task of the story:
@@ -94,6 +95,11 @@ By navigating to the program/app folder where it is extracted - [Tracker](https:
 ```
 
 3) Or run it with `pytest test/functional/test.py` or `pytest test/unit/test.py`
+
+# Docker
+
+To build & run docker do these commands: `docker build -t tracker .` &   `docker run --name tracker_docker -p 5000:5000 tracker`
+Followed by what is said at [Usage](#usage).
 
 # Public
 

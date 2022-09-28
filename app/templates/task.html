@@ -38,10 +38,10 @@
                     <td>{{ task.iteration }}</td>
                     <td>{{ task.status }}</td>
                     <td>
-                        <form action = "http://127.0.0.1:5000/story/{{ id }}/update_task/{{ task.task_id }}" method = "get">
+                        <form action = "/story/{{ id }}/update_task/{{ task.task_id }}" method = "get">
                             <input class="button_style" type="submit" value="Update Task" name="Update Task"/>
                         </form>
-                        <form action = "http://127.0.0.1:5000/story/{{ id }}/delete_task/{{ task.task_id }}" method = "post">
+                        <form action = "/story/{{ id }}/delete_task/{{ task.task_id }}" method = "post">
                             <input class="button_style" type="submit" value="Delete Task" name="Delete Task"/>
                         </form>
                     </td>
@@ -50,7 +50,7 @@
         </tbody>
     </table>
     <div class="float_left">
-        <form action = "http://127.0.0.1:5000/story/{{ id }}/create_task" method = "get">
+        <form action = "/story/{{ id }}/add_task" method = "get">
             <div>
                 <b class="padding">Want to add a new task?</b>
                     <input class="button_style" type="submit" value="Add Task" name="Add Task" style="float: right;"/>
@@ -59,7 +59,7 @@
     </div>
     <p></p>
     <div class="float_left">
-        <form action = "http://127.0.0.1:5000/story/{{ story.id }}/delete_story" method = "post">
+        <form action = "/story/{{ story.id }}/delete_story" method = "post">
             <div>
                 <b class="padding">Want to delete this story?</b>
                     <input class="button_style" type="submit" value="Delete Story" name="Delete Story" style="float: right;"/>
