@@ -78,6 +78,13 @@ Each task also has `Delete Task` button to delete a task for that story.
 It estimates points for how long it is estimated to complete the tasks of stories while the actual time taken to 
 complete the tasks are calculated for each developer and summarised at `Developer summary`.
 
+# Docker
+
+To build & run docker do these commands: 
+`docker build -t tracker .` & `docker run --name tracker_docker -p 5000:5000 tracker`
+
+To run the app ten got and follow what is said at [Navigation](#navigation).
+
 # Tests
 
 By navigating to the program/app folder where it is extracted - [Tracker](https://github.com/aurimas13/Tracker) - one folder before where test folder is held one can run these test commands:
@@ -95,13 +102,6 @@ By navigating to the program/app folder where it is extracted - [Tracker](https:
 ```
 
 3) Or run it with `pytest test/functional/test.py` or `pytest test/unit/test.py`
-
-# Docker
-
-To build & run docker do these commands: 
-`docker build -t tracker .` & `docker run --name tracker_docker -p 5000:5000 tracker`
-
-To run the app ten got and follow what is said at [Navigation](#navigation).
 
 # Public
 
