@@ -13,11 +13,11 @@ DONE 12) Program sumarrizes all developer times
 DONE 13) Make estimated times to not be added in summary for developers if it set when updating task.
 DONE 14) Fix variable names to represent what it does like comp_select should be developers. Do in the weekend.
 DONE 15) Handle error when creating a task but there are no developers.
-NICE TO HAVE 15) Make dev_id print developer_name in Story table.
-NICE TO HAVE 16) Make summary print which stories developers worked on.
-NICE TO HAVE 17) Add pagination for multiple stories and tasks.
-NICE TO HAVE 18) Add actual_times_sum in description when go to 'Update Story'.
-NICE TO DO 19) Optimize loops at routes into functions if possible.
-DONE 20) Add Dockerfile.
-TO DO 21) Padaryti papildomus error handle'inimus.
-TO DO 22) Change for 127.0.0.1 to use APP_BASE_URL for proper Docker run.
+DONE 16) Add Dockerfile.
+DOME 17) Change for 127.0.0.1 to use APP_BASE_URL for proper Docker run.
+NICE TO HAVE 18) Make dev_id print developer_name in Story table.
+NICE TO HAVE 19) Make summary print which stories developers worked on.
+NICE TO HAVE 20) Add pagination for multiple stories and tasks.
+NICE TO HAVE 21) Add actual_times_sum in description when go to 'Update Story'.
+NICE TO DO 22) Optimize loops at routes into functions if possible.
+NICE TO DO 23) Do additional tests.
