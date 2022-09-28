@@ -20,8 +20,8 @@ Please refer to [Requirements](#requirements) for importing required libraries b
 - [Requirements](#requirements)
 - [Usage](#usage)
 - [Navigation](#navigation)
+- [Docker](#docker)
 - [Tests](#tests)
-- [DOCKER](#docker)
 - [Public](#public)
 - [Logo](#photo)
 - [License](#license)
@@ -98,8 +98,10 @@ By navigating to the program/app folder where it is extracted - [Tracker](https:
 
 # Docker
 
-To build & run docker do these commands: `docker build -t tracker .` &   `docker run --name tracker_docker -p 5000:5000 tracker`
-Followed by what is said at [Usage](#usage).
+To build & run docker do these commands: 
+`docker build -t tracker .` & `docker run --name tracker_docker -p 5000:5000 tracker`
+
+To run the app ten got and follow what is said at [Navigation](#navigation).
 
 # Public
 
