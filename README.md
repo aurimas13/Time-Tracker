@@ -116,3 +116,5 @@ The logo of the Time Tracker can be found [here](https://github.com/aurimas13/Tr
 # License
 
 The MIT [LICENSE](https://github.com/aurimas13/Tracker/blob/main/LICENSE)
+
+
