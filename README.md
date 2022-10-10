@@ -2,8 +2,6 @@
 
 
 
-
-
 <p align=center>
   <img height="300px" src="https://github.com/aurimas13/Tracker/blob/main/public/logo/time_tracker.png"/>
 </p>
