@@ -83,7 +83,7 @@ complete the tasks are calculated for each developer and summarised at `Develope
 To build & run docker do these commands: 
 `docker build -t tracker .` & `docker run --name tracker_docker -p 5000:5000 tracker`
 
-To run the app ten got and follow what is said at [Navigation](#navigation).
+To run the app then go and follow what is said at [Navigation](#navigation).
 
 # Tests
 
