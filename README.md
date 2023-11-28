@@ -6,7 +6,7 @@
 <br>
 <p align=center>
   <a href="https://github.com/aurimas13/Tracker/blob/main/LICENSE"><img alt="license" src="https://img.shields.io/npm/l/express"></a>
-  <a href="https://twitter.com/AurimasNausedas"><img alt="twitter" src="https://img.shields.io/twitter/follow/AurimasNausedas?style=social"/></a>
+  <a href="https://twitter.com/aanausedas"><img alt="twitter" src="https://img.shields.io/twitter/follow/aanausedas?style=social"/></a>
 </p>
 
 The app tracks the time of stories and tasks. Details of the usage are under [Usage](#usage).
